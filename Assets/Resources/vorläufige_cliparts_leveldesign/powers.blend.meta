@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: a05ba1c7b76bf0e429e264a7a3dcc7bd
+timeCreated: 1512045033
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Aim
+    100002: Attack
+    100004: Berzerk
+    100006: Bleed
+    100008: Block
+    100010: Bolt
+    100012: Burn
+    100014: Charge
+    100016: Freeze
+    100018: Heal
+    100020: Meditate
+    100022: Plane
+    100024: //RootNode
+    100026: Quake
+    100028: Reflect
+    100030: Regen
+    100032: Shield
+    100034: Sweep
+    100036: Teleport
+    400000: Aim
+    400002: Attack
+    400004: Berzerk
+    400006: Bleed
+    400008: Block
+    400010: Bolt
+    400012: Burn
+    400014: Charge
+    400016: Freeze
+    400018: Heal
+    400020: Meditate
+    400022: Plane
+    400024: //RootNode
+    400026: Quake
+    400028: Reflect
+    400030: Regen
+    400032: Shield
+    400034: Sweep
+    400036: Teleport
+    2300000: Aim
+    2300002: Attack
+    2300004: Berzerk
+    2300006: Bleed
+    2300008: Block
+    2300010: Bolt
+    2300012: Burn
+    2300014: Charge
+    2300016: Freeze
+    2300018: Heal
+    2300020: Meditate
+    2300022: Plane
+    2300024: Quake
+    2300026: Reflect
+    2300028: Regen
+    2300030: Shield
+    2300032: Sweep
+    2300034: Teleport
+    3300000: Aim
+    3300002: Attack
+    3300004: Berzerk
+    3300006: Bleed
+    3300008: Block
+    3300010: Bolt
+    3300012: Burn
+    3300014: Charge
+    3300016: Freeze
+    3300018: Heal
+    3300020: Meditate
+    3300022: Plane
+    3300024: Quake
+    3300026: Reflect
+    3300028: Regen
+    3300030: Shield
+    3300032: Sweep
+    3300034: Teleport
+    4300000: Meditate
+    4300002: Shield
+    4300004: Heal
+    4300006: Burn
+    4300008: Freeze
+    4300010: Quake
+    4300012: Bolt
+    4300014: Regen
+    4300016: Reflect
+    4300018: Charge
+    4300020: Block
+    4300022: Aim
+    4300024: Berzerk
+    4300026: Sweep
+    4300028: Bleed
+    4300030: Plane
+    4300032: Attack
+    4300034: Teleport
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SteelRough
+    second: {fileID: 2100000, guid: eb569363c4641724d9227cfb6559c65f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhiteMat
+    second: {fileID: 2100000, guid: 8a4ab805785a7e04abd27cfa00d76e69, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
