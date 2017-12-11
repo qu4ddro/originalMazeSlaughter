@@ -6,17 +6,20 @@ using UnityEngine;
 public class Killer : MovingObject
 {
 
-    private int _horizontal =0;
-    private int _vertical =0;
+    private int _horizontal = 0;
+    private int _vertical = 0;
+    private DateTime time;
+    public int KillerMovementTimeInMS;
 
 
 
-	// Use this for initialization
-	void Start ()
-	{
-	    base.isMoving = false;
-	    CheckDirectionAndSetMovement();
-	    base.Start();
+    // Use this for initialization
+    void Start()
+    {
+        base.isMoving = false;
+        time = DateTime.Now;
+        CheckDirectionAndSetMovement();
+        base.Start();
     }
 
     private void CheckDirectionAndSetMovement()
@@ -57,7 +60,7 @@ public class Killer : MovingObject
             _horizontal = 1;
             _vertical = 0;
         }
-       else if (direction == Direction.East)
+        else if (direction == Direction.East)
         {
             direction = Direction.South;
             _horizontal = 0;
@@ -69,57 +72,67 @@ public class Killer : MovingObject
             _horizontal = -1;
             _vertical = 0;
         }
-       else if (direction == Direction.West)
+        else if (direction == Direction.West)
         {
             direction = Direction.North;
             _horizontal = 0;
             _vertical = 1;
-        }   
-       
-       
+        }
     }
 
     // Update is called once per frame
-    void Update ()
+    void FixedUpdate()
     {
-
         //CheckDirectionAndSetMovement();
-        if (!base.isMoving)
+        var deltatime = (DateTime.Now - time).Milliseconds;
+        if (!base.isMoving && deltatime >= KillerMovementTimeInMS)
         {
+            //rechts
             ChangeDirectionToRight();
             var hit = TryMove(_horizontal, _vertical);
             if (hit.transform == null)
             {
                 MoveKiller();
+                time = DateTime.Now;
                 return;
             }
+            //geradeaus
+            ChangeDirectionToRight();
             ChangeDirectionToRight();
             ChangeDirectionToRight();
             hit = TryMove(_horizontal, _vertical);
             if (hit.transform == null)
             {
                 MoveKiller();
+                time = DateTime.Now;
                 return;
             }
+            //links
+            ChangeDirectionToRight();
+            ChangeDirectionToRight();
             ChangeDirectionToRight();
             hit = TryMove(_horizontal, _vertical);
             if (hit.transform == null)
             {
                 MoveKiller();
+                time = DateTime.Now;
                 return;
             }
+            //hinten
+            ChangeDirectionToRight();
             ChangeDirectionToRight();
             ChangeDirectionToRight();
             hit = TryMove(_horizontal, _vertical);
             if (hit.transform == null)
             {
                 MoveKiller();
+                time = DateTime.Now;
                 return;
             }
         }
 
-       
-       
+
+
     }
 
     private void MoveKiller()

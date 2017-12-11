@@ -14,7 +14,7 @@ public abstract class MovingObject : MonoBehaviour
     public Direction direction;
     public float moveTime = 0.1f;           //Time it will take object to move, in seconds.
     public LayerMask blockingLayer;         //Layer on which collision will be checked.
-
+    public int moveSteps;
 
     private BoxCollider2D boxCollider;      //The BoxCollider2D component attached to this object.
     private Rigidbody2D rb2D;               //The Rigidbody2D component attached to this object.
@@ -56,6 +56,16 @@ public abstract class MovingObject : MonoBehaviour
 
         //Return true to say that Move was successful
         return new MoveModel { CanMove = true }; ;
+    }
+
+    private void StepMove(Vector3 end)
+    {
+        var step = end / moveSteps;
+        for (int i = 0; i < moveSteps; i++)
+        {
+           var newPostion = Vector3.MoveTowards(rb2D.position, end,moveTime);
+            rb2D.MovePosition(newPostion);
+        }
     }
 
     public RaycastHit2D TryMove(int xDir, int yDir)
