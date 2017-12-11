@@ -87,24 +87,59 @@ public class Killer : MovingObject
         if (!base.isMoving)
         {
             ChangeDirectionToRight();
+            var hit = TryMove(_horizontal, _vertical);
+            if (hit.transform == null)
+            {
+                MoveKiller();
+                return;
+            }
+            ChangeDirectionToRight();
+            ChangeDirectionToRight();
+            hit = TryMove(_horizontal, _vertical);
+            if (hit.transform == null)
+            {
+                MoveKiller();
+                return;
+            }
+            ChangeDirectionToRight();
+            hit = TryMove(_horizontal, _vertical);
+            if (hit.transform == null)
+            {
+                MoveKiller();
+                return;
+            }
+            ChangeDirectionToRight();
+            ChangeDirectionToRight();
+            hit = TryMove(_horizontal, _vertical);
+            if (hit.transform == null)
+            {
+                MoveKiller();
+                return;
+            }
         }
 
        
+       
+    }
+
+    private void MoveKiller()
+    {
         //Check if moving horizontally, if so set vertical to zero.
         if (_horizontal != 0)
-	    {
-	        _vertical = 0;
-	    }
+        {
+            _vertical = 0;
+        }
 
-	    //Check if we have a non-zero value for horizontal or vertical
-	    if (_horizontal != 0 || _vertical != 0)
-	    {
-
-	        //Call AttemptMove passing in the generic parameter Wall, since that is what Player may interact with if they encounter one (by attacking it)
-	        //Pass in horizontal and vertical as parameters to specify the direction to move Player in.
-	       AttemptMove<Wall>(_horizontal, _vertical);
-	    }
+        //Check if we have a non-zero value for horizontal or vertical
+        if (_horizontal != 0 || _vertical != 0)
+        {
+            //Call AttemptMove passing in the generic parameter Wall, since that is what Player may interact with if they encounter one (by attacking it)
+            //Pass in horizontal and vertical as parameters to specify the direction to move Player in.
+            AttemptMove<Wall>(_horizontal, _vertical);
+            Debug.Log(direction.ToString());
+        }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Check if the tag of the trigger collided with is Exit.

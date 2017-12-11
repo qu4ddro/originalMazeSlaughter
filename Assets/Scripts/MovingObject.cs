@@ -9,7 +9,7 @@ using UnityEngine.Experimental.UIElements;
 //The abstract keyword enables you to create classes and class members that are incomplete and must be implemented in a derived class.
 public abstract class MovingObject : MonoBehaviour
 {
-    public enum Direction { North,West,South,East };
+    public enum Direction { North, West, South, East };
 
     public Direction direction;
     public float moveTime = 0.1f;           //Time it will take object to move, in seconds.
@@ -43,9 +43,23 @@ public abstract class MovingObject : MonoBehaviour
     {
         if (isMoving)
         {
-            return new MoveModel{CanMove = false, IsMoving = isMoving};
+            return new MoveModel { CanMove = false, IsMoving = isMoving };
         }
-        //Store start position to move from, based on objects current transform position.
+        Vector2 start = transform.position;
+
+        // Calculate end position based on the direction parameters passed in when calling Move.
+        Vector2 end = start + new Vector2(xDir, yDir);
+
+        //start SmoothMovement co-routine passing in the Vector2 end as destination
+        //StartCoroutine(SmoothMovement(end));
+        rb2D.MovePosition(end);
+
+        //Return true to say that Move was successful
+        return new MoveModel { CanMove = true }; ;
+    }
+
+    public RaycastHit2D TryMove(int xDir, int yDir)
+    {
         Vector2 start = transform.position;
 
         // Calculate end position based on the direction parameters passed in when calling Move.
@@ -60,19 +74,7 @@ public abstract class MovingObject : MonoBehaviour
         //Re-enable boxCollider after linecast
         boxCollider.enabled = true;
 
-        //Check if anything was hit
-        if (hit.transform == null)
-        {
-
-            //If nothing was hit, start SmoothMovement co-routine passing in the Vector2 end as destination
-            StartCoroutine(SmoothMovement(end));
-
-            //Return true to say that Move was successful
-            return new MoveModel{CanMove = true, Hit = hit}; ;
-        }
-
-        //If something was hit, return false, Move was unsuccesful.
-        return new MoveModel{CanMove = false, Hit = hit} ;
+        return hit;
     }
 
     //Co-routine for moving units from one space to next, takes a parameter end to specify where to move to.
@@ -84,9 +86,9 @@ public abstract class MovingObject : MonoBehaviour
         var sqrRemainingDistance = (transform.position - end).sqrMagnitude;
 
         isMoving = true;
-        var counter =0;
+        var counter = 0;
         //While that distance is greater than a very small amount (Epsilon, almost zero):
-        while (sqrRemainingDistance > float.Epsilon ||counter >10)
+        while (sqrRemainingDistance > float.Epsilon || counter > 10)
         {
             //Find a new position proportionally closer to the end, based on the moveTime
             var newPostion = Vector3.MoveTowards(rb2D.position, end, inverseMoveTime * Time.deltaTime);
@@ -99,8 +101,9 @@ public abstract class MovingObject : MonoBehaviour
 
             counter++;
 
-            if (counter >10)
+            if (counter > 10)
             {
+                rb2D.MovePosition(end);
                 isMoving = false;
                 yield break;
             }
@@ -113,31 +116,42 @@ public abstract class MovingObject : MonoBehaviour
 
     //The virtual keyword means AttemptMove can be overridden by inheriting classes using the override keyword.
     //AttemptMove takes a generic parameter T to specify the type of component we expect our unit to interact with if blocked (Player for Enemies, Wall for Player).
-    protected virtual bool AttemptMove<T>(int xDir, int yDir)
+    protected virtual void AttemptMove<T>(int xDir, int yDir)
         where T : Component
     {
-        //Hit will store whatever our linecast hits when Move is called.
+        ////Hit will store whatever our linecast hits when Move is called.
 
-        //Set canMove to true if Move was successful, false if failed.
-        var moveModel = Move(xDir, yDir);
-        if (moveModel.IsMoving)
+        ////Set canMove to true if Move was successful, false if failed.
+        //var moveModel = Move(xDir, yDir);
+        //if (moveModel.IsMoving)
+        //{
+        //    return moveModel.IsMoving;
+        //}
+        ////Check if nothing was hit by linecast
+        //if (moveModel.Hit.transform == null)
+        //    //If nothing was hit, return and don't execute further code.
+        //    return false;
+
+        ////Get a component reference to the component of type T attached to the object that was hit
+        //T hitComponent = moveModel.Hit.transform.GetComponent<T>();
+
+        ////If canMove is false and hitComponent is not equal to null, meaning MovingObject is blocked and has hit something it can interact with.
+        //if (!moveModel.CanMove && hitComponent != null)
+
+        //    //Call the OnCantMove function and pass it hitComponent as a parameter.
+        //    OnCantMove(hitComponent);
+        //return moveModel.IsMoving;
+
+        var hit = TryMove(xDir, yDir);
+        if (hit.transform != null)
         {
-            return moveModel.IsMoving;
-        }
-        //Check if nothing was hit by linecast
-        if (moveModel.Hit.transform == null)
-            //If nothing was hit, return and don't execute further code.
-            return false;
-
-        //Get a component reference to the component of type T attached to the object that was hit
-        T hitComponent = moveModel.Hit.transform.GetComponent<T>();
-
-        //If canMove is false and hitComponent is not equal to null, meaning MovingObject is blocked and has hit something it can interact with.
-        if (!moveModel.CanMove && hitComponent != null)
-
-            //Call the OnCantMove function and pass it hitComponent as a parameter.
+            var hitComponent = hit.transform.GetComponent<T>();
             OnCantMove(hitComponent);
-        return moveModel.IsMoving;
+        }
+        else
+        {
+            Move(xDir, yDir);
+        }
     }
 
     //The abstract modifier indicates that the thing being modified has a missing or incomplete implementation.
