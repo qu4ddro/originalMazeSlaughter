@@ -11,11 +11,14 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 
     private GameObject levelImage;                          //Image to block out level as levels are being set up, background for levelText.
-    private bool doingSetup = true;                         //Boolean to check if we're setting up board, prevent Player from moving during setup.
+    //private bool doingSetup = true;                         //Boolean to check if we're setting up board, prevent Player from moving during setup.
 
     public int level = 1;
 
-    public Scene[] ScenesToLoad;
+    public Object[] scenesToLoad;
+
+    public Object scene;
+
 
     //Awake is always called before any Start functions
     void Awake()
@@ -51,21 +54,15 @@ public class GameManager : MonoBehaviour
     //This is called each time a scene is loaded.
     static private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        instance.level++;
-        instance.InitGame();
+        //instance.InitGame();
     }
 
 
     //Initializes the game for each level.
     void InitGame()
     {
-        //While doingSetup is true the player can't move, prevent player from moving while title card is up.
-        doingSetup = true;
-
-        //SceneManager.LoadScene(ScenesToLoad[level].name);
-
-        doingSetup = false;
-
+        // ...and start a coroutine that will load the desired scene.
+        StartCoroutine(LoadNewScene(scene));
     }
 
 
@@ -76,13 +73,7 @@ public class GameManager : MonoBehaviour
         levelImage.SetActive(false);
 
         //Set doingSetup to false allowing player to move again.
-        doingSetup = false;
-    }
-
-    //Update is called every frame.
-    void Update()
-    {
-        
+        //doingSetup = false;
     }
 
     //GameOver is called when the player reaches 0 food points
@@ -90,5 +81,22 @@ public class GameManager : MonoBehaviour
     {
         //Disable this GameManager.
         enabled = false;
+    }
+
+
+    // The coroutine runs on its own at the same time as Update() and takes an integer indicating which scene to load.
+    IEnumerator LoadNewScene(Object scene)
+    {
+
+        // Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
+         AsyncOperation async = SceneManager.LoadSceneAsync(scene.name);
+
+        // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
+        while (!async.isDone)
+        {
+            Debug.Log("Waiting for Scene...");
+            yield return null;
+        }
+
     }
 }

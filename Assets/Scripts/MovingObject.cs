@@ -14,7 +14,6 @@ public abstract class MovingObject : MonoBehaviour
 
     private bool isMoving;
 
-
     //Protected, virtual functions can be overridden by inheriting classes.
     protected virtual void Start()
     {
