@@ -9,17 +9,80 @@ public class Killer : MovingObject
     private int _horizontal = 0;
     private int _vertical = 0;
     private DateTime time;
-    public int KillerMovementTimeInMS;
-
-
 
     // Use this for initialization
     void Start()
     {
         base.isMoving = false;
-        time = DateTime.Now;
-        CheckDirectionAndSetMovement();
         base.Start();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!isMoving)
+        {
+            RandomMovement();
+        }
+    }
+
+    private void RandomMovement()
+    {
+        CheckDirectionAndSetMovement();
+        ChangeDirectionToRight();
+        //var deltatime = (DateTime.Now - time).Milliseconds;
+
+        if (!base.isMoving)
+        {
+            AttemptMove<Wall>(_horizontal, _vertical);
+        }
+
+        //if (!base.isMoving)
+        //{
+        //    //rechts
+        //    ChangeDirectionToRight();
+        //    AttemptMove<Wall>(_horizontal,_vertical);
+        //    var hit = TryMove(_horizontal, _vertical);
+        //    if (hit.transform == null)
+        //    {
+        //        MoveKiller();
+        //        time = DateTime.Now;
+        //        return;
+        //    }
+        //    //geradeaus
+        //    ChangeDirectionToRight();
+        //    ChangeDirectionToRight();
+        //    ChangeDirectionToRight();
+        //    hit = TryMove(_horizontal, _vertical);
+        //    if (hit.transform == null)
+        //    {
+        //        MoveKiller();
+        //        time = DateTime.Now;
+        //        return;
+        //    }
+        //    //links
+        //    ChangeDirectionToRight();
+        //    ChangeDirectionToRight();
+        //    ChangeDirectionToRight();
+        //    hit = TryMove(_horizontal, _vertical);
+        //    if (hit.transform == null)
+        //    {
+        //        MoveKiller();
+        //        time = DateTime.Now;
+        //        return;
+        //    }
+        //    //hinten
+        //    ChangeDirectionToRight();
+        //    ChangeDirectionToRight();
+        //    ChangeDirectionToRight();
+        //    hit = TryMove(_horizontal, _vertical);
+        //    if (hit.transform == null)
+        //    {
+        //        MoveKiller();
+        //        time = DateTime.Now;
+        //        return;
+        //    }
+        //}
     }
 
     private void CheckDirectionAndSetMovement()
@@ -48,8 +111,8 @@ public class Killer : MovingObject
 
     protected override void OnCantMove<T>(T component)
     {
-        Debug.Log("killer_oncantmove");
-        //ChangeDirectionToRight();
+        ChangeDirectionToLeft();
+        AttemptMove<Wall>(_horizontal, _vertical);
     }
 
     private void ChangeDirectionToRight()
@@ -80,61 +143,34 @@ public class Killer : MovingObject
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void ChangeDirectionToLeft()
     {
-        //CheckDirectionAndSetMovement();
-        var deltatime = (DateTime.Now - time).Milliseconds;
-        if (!base.isMoving && deltatime >= KillerMovementTimeInMS)
+        if (direction == Direction.North)
         {
-            //rechts
-            ChangeDirectionToRight();
-            var hit = TryMove(_horizontal, _vertical);
-            if (hit.transform == null)
-            {
-                MoveKiller();
-                time = DateTime.Now;
-                return;
-            }
-            //geradeaus
-            ChangeDirectionToRight();
-            ChangeDirectionToRight();
-            ChangeDirectionToRight();
-            hit = TryMove(_horizontal, _vertical);
-            if (hit.transform == null)
-            {
-                MoveKiller();
-                time = DateTime.Now;
-                return;
-            }
-            //links
-            ChangeDirectionToRight();
-            ChangeDirectionToRight();
-            ChangeDirectionToRight();
-            hit = TryMove(_horizontal, _vertical);
-            if (hit.transform == null)
-            {
-                MoveKiller();
-                time = DateTime.Now;
-                return;
-            }
-            //hinten
-            ChangeDirectionToRight();
-            ChangeDirectionToRight();
-            ChangeDirectionToRight();
-            hit = TryMove(_horizontal, _vertical);
-            if (hit.transform == null)
-            {
-                MoveKiller();
-                time = DateTime.Now;
-                return;
-            }
+            direction = Direction.West;
+            _horizontal = -1;
+            _vertical = 0;
         }
-
-
-
+        else if (direction == Direction.East)
+        {
+            direction = Direction.North;
+            _horizontal = 0;
+            _vertical = 1;
+        }
+        else if (direction == Direction.South)
+        {
+            direction = Direction.East;
+            _horizontal = 1;
+            _vertical = 0;
+        }
+        else if (direction == Direction.West)
+        {
+            direction = Direction.South;
+            _horizontal = 0;
+            _vertical = -1;
+        }
     }
-
+    
     private void MoveKiller()
     {
         //Check if moving horizontally, if so set vertical to zero.
