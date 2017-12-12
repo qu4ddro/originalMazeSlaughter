@@ -666,7 +666,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 427718988}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 151830623}
@@ -5186,7 +5186,7 @@ TilemapCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 473012858}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -10133,11 +10133,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4146868037367600, guid: d103c68b6c88a984db4416141d8d65a8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -12.97
+      value: -13.6
       objectReference: {fileID: 0}
     - target: {fileID: 4146868037367600, guid: d103c68b6c88a984db4416141d8d65a8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.29
+      value: -2.41
       objectReference: {fileID: 0}
     - target: {fileID: 4146868037367600, guid: d103c68b6c88a984db4416141d8d65a8, type: 2}
       propertyPath: m_LocalPosition.z
@@ -10162,6 +10162,14 @@ Prefab:
     - target: {fileID: 4146868037367600, guid: d103c68b6c88a984db4416141d8d65a8, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146868037367600, guid: d103c68b6c88a984db4416141d8d65a8, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.353964
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146868037367600, guid: d103c68b6c88a984db4416141d8d65a8, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.3321625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d103c68b6c88a984db4416141d8d65a8, type: 2}
