@@ -14,13 +14,13 @@ public class Player : MovingObject
 
         //Call the Start function of the MovingObject base class.
         base.Start();
+
     }
 
     private void Update()
     {
         int horizontal = 0;     //Used to store the horizontal move direction.
         int vertical = 0;       //Used to store the vertical move direction.
-
 
         //Get input from the input manager, round it to an integer and store in horizontal to set x axis move direction
         horizontal = (int)(Input.GetAxisRaw("Horizontal"));
@@ -42,6 +42,18 @@ public class Player : MovingObject
             //Pass in horizontal and vertical as parameters to specify the direction to move Player in.
             AttemptMove<Wall>(horizontal, vertical);
         }
+
+
+        //Schritte-Sounds
+        if (isMoving)
+        {
+            GetComponent<AudioSource>().UnPause();
+        }
+        else
+        {
+            GetComponent<AudioSource>().Pause();
+        }
+
     }
 
     //AttemptMove overrides the AttemptMove function in the base class MovingObject
