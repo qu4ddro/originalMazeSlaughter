@@ -41,6 +41,7 @@ public abstract class MovingObject : MonoBehaviour
         if (isMoving)
         {
             hit = new RaycastHit2D();
+            
             return false;
         }
         //Store start position to move from, based on objects current transform position.
