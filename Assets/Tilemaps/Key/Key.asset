@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Key
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 226eecf00330f244fa51c2f0fc5d785c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c589026b9eb8e524db6afa49b517351c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

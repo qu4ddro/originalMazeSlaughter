@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: WallTearable
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 9e41e491df87ead4ab30ac9133b95777, type: 3}
+  m_Sprite: {fileID: 21300000, guid: daccb8307ba4a834b95a32356028e6de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

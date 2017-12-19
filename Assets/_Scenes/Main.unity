@@ -112,6 +112,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &195712474 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1395042427027198, guid: ea65b9d5dbb7757449f8eca0e602e778,
+    type: 2}
+  m_PrefabInternal: {fileID: 1510773673}
 --- !u!1 &444591601
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,8 +146,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStartDelay: 2
   level: 1
-  scenesToLoad: []
-  scene: {fileID: 102900000, guid: f7179f2f183c77546a76ed83313d2891, type: 3}
+  scenesToLoad:
+  - {fileID: 102900000, guid: f7179f2f183c77546a76ed83313d2891, type: 3}
+  - {fileID: 102900000, guid: 2ec1fa08b39975440bb5fbe906d2ce55, type: 3}
+  - {fileID: 102900000, guid: 27e487598d86f3240bcfa3f5ef7bf2f1, type: 3}
+  player: {fileID: 195712474}
 --- !u!4 &444591603
 Transform:
   m_ObjectHideFlags: 0
@@ -290,3 +298,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8189ebf1abcaa2642ae87efc1489b003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}

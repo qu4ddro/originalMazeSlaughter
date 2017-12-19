@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Untergrund
+  - Axe
+  - Trap
+  - Torch
+  - Syringe
+  - Key
   layers:
   - Default
   - TransparentFX

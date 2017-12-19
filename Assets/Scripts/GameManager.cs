@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public Object[] scenesToLoad;
 
-    public Object scene;
+    public GameObject player;
 
 
     //Awake is always called before any Start functions
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     void InitGame()
     {
         // ...and start a coroutine that will load the desired scene.
-        StartCoroutine(LoadNewScene(scene));
+        StartCoroutine(LoadNewScene(scenesToLoad[level-1]));
     }
 
 
@@ -83,6 +83,11 @@ public class GameManager : MonoBehaviour
         enabled = false;
     }
 
+    public void NextLevel()
+    {
+        level++;
+        LoadNewScene(scenesToLoad[level-1]);
+    }
 
     // The coroutine runs on its own at the same time as Update() and takes an integer indicating which scene to load.
     IEnumerator LoadNewScene(Object scene)
