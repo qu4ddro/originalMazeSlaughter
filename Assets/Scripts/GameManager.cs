@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         level++;
-        LoadNewScene(scenesToLoad[level-1]);
+        StartCoroutine(LoadNewScene(scenesToLoad[level-1]));
     }
 
     // The coroutine runs on its own at the same time as Update() and takes an integer indicating which scene to load.
