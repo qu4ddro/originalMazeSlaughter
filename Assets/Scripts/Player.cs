@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 using UnityEngine.UI;	//Allows us to use UI.
 using UnityEngine.SceneManagement;
 
 //Player inherits from MovingObject, our base class for objects that can move, Enemy also inherits from this.
 public class Player : MovingObject
 {
+    public string[] items = new string[3];
+
     //Start overrides the Start function of MovingObject
     protected override void Start()
     {
@@ -42,7 +45,6 @@ public class Player : MovingObject
             //Pass in horizontal and vertical as parameters to specify the direction to move Player in.
             AttemptMove<Wall>(horizontal, vertical);
         }
-
 
         //Schritte-Sounds
         if (isMoving)
@@ -81,6 +83,40 @@ public class Player : MovingObject
         {
             //Disable the player object since level is over.
             enabled = false;
+            if (hasItem("Key"))
+                GameManager.instance.NextLevel();
+            else
+            {
+                Debug.Log("No Key! Can't Escape");
+            }
+        }
+        else if (other.tag == "Key" || other.tag == "Axe" || other.tag == "Trap" || other.tag == "Torch" || other.tag == "Syringe" || other.tag == "Key")
+        {
+            PickupItem(other);
         }
     }
+
+    public bool hasItem(string searchedItem)
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] == searchedItem)
+                return true;
+        }
+        return false;
+    }
+
+    private void PickupItem(Collider2D pickedUpItem)
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] == "")
+            {
+                items[i] = pickedUpItem.gameObject.tag;
+                Destroy(pickedUpItem.gameObject);
+                return;
+            }
+        }
+    }
+
 }

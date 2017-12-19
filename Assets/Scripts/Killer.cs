@@ -36,53 +36,6 @@ public class Killer : MovingObject
         {
             AttemptMove<Wall>(_horizontal, _vertical);
         }
-
-        //if (!base.isMoving)
-        //{
-        //    //rechts
-        //    ChangeDirectionToRight();
-        //    AttemptMove<Wall>(_horizontal,_vertical);
-        //    var hit = TryMove(_horizontal, _vertical);
-        //    if (hit.transform == null)
-        //    {
-        //        MoveKiller();
-        //        time = DateTime.Now;
-        //        return;
-        //    }
-        //    //geradeaus
-        //    ChangeDirectionToRight();
-        //    ChangeDirectionToRight();
-        //    ChangeDirectionToRight();
-        //    hit = TryMove(_horizontal, _vertical);
-        //    if (hit.transform == null)
-        //    {
-        //        MoveKiller();
-        //        time = DateTime.Now;
-        //        return;
-        //    }
-        //    //links
-        //    ChangeDirectionToRight();
-        //    ChangeDirectionToRight();
-        //    ChangeDirectionToRight();
-        //    hit = TryMove(_horizontal, _vertical);
-        //    if (hit.transform == null)
-        //    {
-        //        MoveKiller();
-        //        time = DateTime.Now;
-        //        return;
-        //    }
-        //    //hinten
-        //    ChangeDirectionToRight();
-        //    ChangeDirectionToRight();
-        //    ChangeDirectionToRight();
-        //    hit = TryMove(_horizontal, _vertical);
-        //    if (hit.transform == null)
-        //    {
-        //        MoveKiller();
-        //        time = DateTime.Now;
-        //        return;
-        //    }
-        //}
     }
 
     private void CheckDirectionAndSetMovement()

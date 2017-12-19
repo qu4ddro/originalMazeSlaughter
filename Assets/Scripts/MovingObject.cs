@@ -21,6 +21,8 @@ public abstract class MovingObject : MonoBehaviour
 
     public Direction direction;
 
+    public  Sprite[] sprites = new Sprite[4];
+
     //Protected, virtual functions can be overridden by inheriting classes.
     protected virtual void Start()
     {
@@ -44,6 +46,16 @@ public abstract class MovingObject : MonoBehaviour
             
             return false;
         }
+
+        if (xDir > 0)
+            this.GetComponent<SpriteRenderer>().sprite = sprites[1];
+        else if (xDir < 0)
+            this.GetComponent<SpriteRenderer>().sprite = sprites[3];
+        else if (yDir > 0)
+            this.GetComponent<SpriteRenderer>().sprite = sprites[0];
+        else if (yDir < 0)
+            this.GetComponent<SpriteRenderer>().sprite = sprites[2];
+
         //Store start position to move from, based on objects current transform position.
         Vector2 start = transform.position;
 
@@ -98,6 +110,7 @@ public abstract class MovingObject : MonoBehaviour
             //Return and loop until sqrRemainingDistance is close enough to zero to end the function
             yield return null;
         }
+
         isMoving = false;
     }
 
