@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 1670025603488330}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4e97aec4f4a543a4fb72f8d9f1fc6bbb, type: 2}
+  m_Controller: {fileID: 22100000, guid: 9e806beca06582546b13136d0f5ea19d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -117,17 +117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0695a8efe1d6d498f4142df5ed2837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 0.1
+  moveTime: 100
   blockingLayer:
     serializedVersion: 2
     m_Bits: 256
   isMoving: 0
   direction: 1
-  sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!212 &212658947729908734
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -160,7 +155,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -24530033
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: cee9a0df06bf3d3418bf4a1960cba549, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

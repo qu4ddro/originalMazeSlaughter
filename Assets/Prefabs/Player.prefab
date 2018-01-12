@@ -36,12 +36,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4550368846130090}
   - component: {fileID: 20572807161369332}
+  - component: {fileID: 114669287671075488}
   - component: {fileID: 124505614865501382}
   - component: {fileID: 81112659564305094}
   - component: {fileID: 82628311794559884}
   - component: {fileID: 82295247898873968}
   - component: {fileID: 114802419159258774}
-  - component: {fileID: 114669287671075488}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1310909885975564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.114285, y: 0.4878049, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 0.5, y: 0.5555556, z: 1}
   m_Children:
   - {fileID: 4171213146576654}
@@ -104,8 +104,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1395042427027198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.48, y: -0.4, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.82, z: 1}
+  m_LocalPosition: {x: -8.5, y: -5.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4550368846130090}
   m_Father: {fileID: 0}
@@ -131,7 +131,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 2.81
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -158,13 +158,13 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.05
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &61344702272810448
 BoxCollider2D:
@@ -183,7 +183,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.0546875, y: 1.0546875}
-    newSize: {x: 5.4, y: 5.4}
+    newSize: {x: 1.0546875, y: 1.0546875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -197,14 +197,14 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1310909885975564}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!82 &82295247898873968
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1310909885975564}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 59e0306bbea21814bafa4d2805aebf29, type: 3}
@@ -284,7 +284,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1395042427027198}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a5b2400459110a4478bb477e27f8835b, type: 3}
@@ -364,7 +364,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1310909885975564}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3043be8602e44234cb8835f30ff94f3e, type: 3}
@@ -491,7 +491,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1310909885975564}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2101c84cfd203df4db5027e6f8b67809, type: 3}
   m_Name: 
@@ -507,17 +507,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d63f67f7ea7474987230b2fb587a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 0.1
+  moveTime: 150
   blockingLayer:
     serializedVersion: 2
     m_Bits: 256
   isMoving: 0
   direction: 0
-  sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   items:
   - 
   - 
@@ -561,14 +556,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -24530033
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 654bcc3f04883ea46a4d174ecac25264, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3888019ce2dc7ea4da01b71c9626f024, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.4, y: 5.4}
+  m_Size: {x: 1.0546875, y: 1.0546875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

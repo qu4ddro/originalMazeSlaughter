@@ -10,20 +10,18 @@ public enum Direction
 //The abstract keyword enables you to create classes and class members that are incomplete and must be implemented in a derived class.
 public abstract class MovingObject : MonoBehaviour
 {
-    public float moveTime = 0.1f;           //Time it will take object to move, in seconds.
+    public float moveTime = 100f;           //Time it will take object to move, in milliseconds.
     public LayerMask blockingLayer;         //Layer on which collision will be checked.
 
     private BoxCollider2D boxCollider;      //The BoxCollider2D component attached to this object.
     private Rigidbody2D rb2D;               //The Rigidbody2D component attached to this object.
     private float inverseMoveTime;          //Used to make movement more efficient.
 
+    private Animator animator; 
+
     public bool isMoving;
 
     public Direction direction;
-
-    public  Sprite[] sprites = new Sprite[4];
-
-
 
     //Protected, virtual functions can be overridden by inheriting classes.
     protected virtual void Start()
@@ -35,16 +33,42 @@ public abstract class MovingObject : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
 
         //By storing the reciprocal of the move time we can use it by multiplying instead of dividing, this is more efficient.
-        inverseMoveTime = 1f / moveTime;
+        inverseMoveTime = 1f / (moveTime/1000);
 
-        
+        animator = GetComponent<Animator>();
+    }
 
+    //The virtual keyword means AttemptMove can be overridden by inheriting classes using the override keyword.
+    //AttemptMove takes a generic parameter T to specify the type of component we expect our unit to interact with if blocked (Player for Enemies, Wall for Player).
+    protected virtual void AttemptMove<T>(int xDir, int yDir)
+        where T : Component
+    {
+        //Hit will store whatever our linecast hits when Move is called.
+        RaycastHit2D hit;
+
+        //Set canMove to true if Move was successful, false if failed.
+        bool canMove = Move(xDir, yDir, out hit);
+
+        //Check if nothing was hit by linecast
+        if (hit.transform == null)
+            //If nothing was hit, return and don't execute further code.
+            return;
+
+        //Get a component reference to the component of type T attached to the object that was hit
+        T hitComponent = hit.transform.GetComponent<T>();
+
+        //If canMove is false and hitComponent is not equal to null, meaning MovingObject is blocked and has hit something it can interact with.
+        if (!canMove && hitComponent != null)
+
+            //Call the OnCantMove function and pass it hitComponent as a parameter.
+            OnCantMove(hitComponent);
     }
 
     //Move returns true if it is able to move and false if not. 
     //Move takes parameters for x direction, y direction and a RaycastHit2D to check collision.
     protected bool Move(int xDir, int yDir, out RaycastHit2D hit)
     {
+        
         if (isMoving)
         {
             hit = new RaycastHit2D();
@@ -52,15 +76,8 @@ public abstract class MovingObject : MonoBehaviour
             return false;
         }
 
-        if (xDir > 0)
-            this.GetComponent<SpriteRenderer>().sprite = sprites[1];
-        else if (xDir < 0)
-            this.GetComponent<SpriteRenderer>().sprite = sprites[3];
-        else if (yDir > 0)
-            this.GetComponent<SpriteRenderer>().sprite = sprites[0];
-        else if (yDir < 0)
-            this.GetComponent<SpriteRenderer>().sprite = sprites[2];
-
+        animator.SetInteger("_horizontal", xDir);
+        animator.SetInteger("_vertical", yDir);
        
 
         //Store start position to move from, based on objects current transform position.
@@ -89,6 +106,9 @@ public abstract class MovingObject : MonoBehaviour
             return true;
         }
 
+        animator.SetInteger("_horizontal", xDir);
+        animator.SetInteger("_vertical", yDir);
+
         //If something was hit, return false, Move was unsuccesful.
         return false;
     }
@@ -102,6 +122,9 @@ public abstract class MovingObject : MonoBehaviour
 
         isMoving = true;
 
+        //Anim
+        animator.speed = 1;
+        
         //While that distance is greater than a very small amount (Epsilon, almost zero):
         while (sqrRemainingDistance > float.Epsilon)
         {
@@ -119,32 +142,7 @@ public abstract class MovingObject : MonoBehaviour
         }
 
         isMoving = false;
-    }
-
-    //The virtual keyword means AttemptMove can be overridden by inheriting classes using the override keyword.
-    //AttemptMove takes a generic parameter T to specify the type of component we expect our unit to interact with if blocked (Player for Enemies, Wall for Player).
-    protected virtual void AttemptMove<T>(int xDir, int yDir)
-        where T : Component
-    {
-        //Hit will store whatever our linecast hits when Move is called.
-        RaycastHit2D hit;
-
-        //Set canMove to true if Move was successful, false if failed.
-        bool canMove = Move(xDir, yDir, out hit);
-
-        //Check if nothing was hit by linecast
-        if (hit.transform == null)
-            //If nothing was hit, return and don't execute further code.
-            return;
-
-        //Get a component reference to the component of type T attached to the object that was hit
-        T hitComponent = hit.transform.GetComponent<T>();
-
-        //If canMove is false and hitComponent is not equal to null, meaning MovingObject is blocked and has hit something it can interact with.
-        if (!canMove && hitComponent != null)
-
-            //Call the OnCantMove function and pass it hitComponent as a parameter.
-            OnCantMove(hitComponent);
+        animator.speed = 0;
     }
 
     //The abstract modifier indicates that the thing being modified has a missing or incomplete implementation.

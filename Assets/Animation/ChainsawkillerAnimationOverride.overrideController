@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ChainsawkillerAnimationOverride
+  m_Controller: {fileID: 9100000, guid: f0e76a2b166ab904f922a501fc9863ce, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 52682c73a6c9a34469d9fcc276498545, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 03c8ba5ffc5e41b4095122ac509ca733, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e46e8e2eda20bdf489083f1acaffbe5d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e4c918e7613b947438cfdef472fedc20, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 81e762fea37ce9d42bf8414fcc439159, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ee1a7d24cc89f5d46a7c45112d8b5404, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3ad98edf296b87c48ac625ba57c6dc09, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ea8eb88d5f9fd12408b3a5c5014e005e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d1c432b0b1618264e89752d5b2d89cdc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 56f8779273415b24aad0c207fec25e38, type: 2}

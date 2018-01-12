@@ -9,8 +9,6 @@ public class Player : MovingObject
 {
     public string[] items = new string[3];
 
-    Animator animator;
-
     //Start overrides the Start function of MovingObject
     protected override void Start()
     {
@@ -19,9 +17,6 @@ public class Player : MovingObject
 
         //Call the Start function of the MovingObject base class.
         base.Start();
-
-        animator = GetComponent<Animator>();
-
     }
 
     private void Update()
@@ -34,10 +29,6 @@ public class Player : MovingObject
 
         //Get input from the input manager, round it to an integer and store in vertical to set y axis move direction
         vertical = (int)(Input.GetAxisRaw("Vertical"));
-
-        //Anim
-        animator.SetInteger("_horizontal", horizontal);
-        animator.SetInteger("_vertical", vertical);
 
         //Check if moving horizontally, if so set vertical to zero.
         if (horizontal != 0)

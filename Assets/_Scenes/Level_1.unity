@@ -281,11 +281,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4874432843605198, guid: ea65b9d5dbb7757449f8eca0e602e778, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 15.48
+      value: 15.5
       objectReference: {fileID: 0}
     - target: {fileID: 4874432843605198, guid: ea65b9d5dbb7757449f8eca0e602e778, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.4
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4874432843605198, guid: ea65b9d5dbb7757449f8eca0e602e778, type: 2}
       propertyPath: m_LocalPosition.z
@@ -309,6 +309,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4874432843605198, guid: ea65b9d5dbb7757449f8eca0e602e778, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61344702272810448, guid: ea65b9d5dbb7757449f8eca0e602e778,
+        type: 2}
+      propertyPath: m_AutoTiling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61344702272810448, guid: ea65b9d5dbb7757449f8eca0e602e778,
+        type: 2}
+      propertyPath: m_UsedByComposite
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61344702272810448, guid: ea65b9d5dbb7757449f8eca0e602e778,
+        type: 2}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1898,7 +1913,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1987655491
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_MaxChunkCount: 16
@@ -3395,7 +3410,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1675703004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.48, y: -0.4, z: -10}
+  m_LocalPosition: {x: 15.5, y: -0.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 380718369}
@@ -3625,7 +3640,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1987655491
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_MaxChunkCount: 16

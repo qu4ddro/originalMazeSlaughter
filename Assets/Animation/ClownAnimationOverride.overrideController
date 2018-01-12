@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ClownAnimationOverride
+  m_Controller: {fileID: 9100000, guid: f0e76a2b166ab904f922a501fc9863ce, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: d1c432b0b1618264e89752d5b2d89cdc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7cecba541d809c248ad7524cdd32e900, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 52682c73a6c9a34469d9fcc276498545, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 496852a0db4657146b001806d45168bf, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e46e8e2eda20bdf489083f1acaffbe5d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d975606194f830e44b99a5d3b474a5bc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3ad98edf296b87c48ac625ba57c6dc09, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1a8a9b683162aa0429d330ab709478ff, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 81e762fea37ce9d42bf8414fcc439159, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dfbddf96b89a8d14fa434ad9258cc147, type: 2}

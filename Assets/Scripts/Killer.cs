@@ -11,15 +11,11 @@ public class Killer : MovingObject
     private DateTime time;
 
 
-    Animator animator;
-
     // Use this for initialization
     void Start()
     {
-        base.isMoving = false;
         base.Start();
-
-        animator = GetComponent<Animator>();
+        base.isMoving = false;
     }
 
     // Update is called once per frame
@@ -65,11 +61,6 @@ public class Killer : MovingObject
             _horizontal = -1;
             _vertical = 0;
         }
-
-
-        animator.SetInteger("_horizontal", _horizontal);
-        animator.SetInteger("_vertical", _vertical);
-
     }
 
     protected override void OnCantMove<T>(T component)
