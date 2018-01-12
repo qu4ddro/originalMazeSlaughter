@@ -23,6 +23,8 @@ public abstract class MovingObject : MonoBehaviour
 
     public  Sprite[] sprites = new Sprite[4];
 
+
+
     //Protected, virtual functions can be overridden by inheriting classes.
     protected virtual void Start()
     {
@@ -34,6 +36,9 @@ public abstract class MovingObject : MonoBehaviour
 
         //By storing the reciprocal of the move time we can use it by multiplying instead of dividing, this is more efficient.
         inverseMoveTime = 1f / moveTime;
+
+        
+
     }
 
     //Move returns true if it is able to move and false if not. 
@@ -55,6 +60,8 @@ public abstract class MovingObject : MonoBehaviour
             this.GetComponent<SpriteRenderer>().sprite = sprites[0];
         else if (yDir < 0)
             this.GetComponent<SpriteRenderer>().sprite = sprites[2];
+
+       
 
         //Store start position to move from, based on objects current transform position.
         Vector2 start = transform.position;

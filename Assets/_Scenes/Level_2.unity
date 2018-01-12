@@ -246,31 +246,6 @@ Prefab:
       propertyPath: m_Name
       value: ChainsawKiller
       objectReference: {fileID: 0}
-    - target: {fileID: 95687628029731160, guid: 747592f18a3a4cb44ab3c7f93a8c3a1a,
-        type: 2}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 61399724945659048, guid: 747592f18a3a4cb44ab3c7f93a8c3a1a,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61399724945659048, guid: 747592f18a3a4cb44ab3c7f93a8c3a1a,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 61399724945659048, guid: 747592f18a3a4cb44ab3c7f93a8c3a1a,
-        type: 2}
-      propertyPath: m_UsedByComposite
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 61399724945659048, guid: 747592f18a3a4cb44ab3c7f93a8c3a1a,
-        type: 2}
-      propertyPath: m_AutoTiling
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 747592f18a3a4cb44ab3c7f93a8c3a1a, type: 2}
   m_IsPrefabParent: 0
