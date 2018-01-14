@@ -9,15 +9,6 @@ public class Player : MovingObject
 {
     public string[] items = new string[3];
 
-    //Start overrides the Start function of MovingObject
-    protected override void Start()
-    {
-        //Get a component reference to the Player's animator component
-        // animator = GetComponent<Animator>();
-
-        //Call the Start function of the MovingObject base class.
-        base.Start();
-    }
 
     private void Update()
     {
@@ -55,16 +46,6 @@ public class Player : MovingObject
             GetComponent<AudioSource>().Pause();
         }
 
-     
-
-    }
-
-    //AttemptMove overrides the AttemptMove function in the base class MovingObject
-    //AttemptMove takes a generic parameter T which for Player will be of the type Wall, it also takes integers for x and y direction to move in.
-    protected override void AttemptMove<T>(int xDir, int yDir)
-    {
-        //Call the AttemptMove method of the base class, passing in the component T (in this case Wall) and x and y direction to move.
-        base.AttemptMove<T>(xDir, yDir);
     }
 
 
@@ -72,7 +53,7 @@ public class Player : MovingObject
     //It takes a generic parameter T which in the case of Player is a Wall which the player can attack and destroy.
     protected override void OnCantMove<T>(T component)
     {
-        Debug.Log("oncantmove");
+        Debug.Log("Player cant move there");
     }
 
 
@@ -88,10 +69,22 @@ public class Player : MovingObject
                 GameManager.instance.NextLevel();
             else
             {
+                other.GetComponent<BoxCollider2D>().enabled = false;
                 Debug.Log("No Key! Can't Escape");
+                other.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
-        else if (other.tag == "Key" || other.tag == "Axe" || other.tag == "Trap" || other.tag == "Torch" || other.tag == "Syringe" || other.tag == "Key")
+        else if (other.tag == "Syringe")
+        {
+            transform.Find("Syringe").gameObject.SetActive(true);
+            Destroy(other.gameObject);
+        }
+        else if (other.tag == "Torch")
+        {
+            transform.Find("Torch").gameObject.SetActive(true);
+            Destroy(other.gameObject);
+        }
+        else if (other.tag == "Key" || other.tag == "Axe" || other.tag == "Trap" ||  other.tag == "Key")
         {
             PickupItem(other);
         }

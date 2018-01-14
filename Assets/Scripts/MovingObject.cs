@@ -32,10 +32,15 @@ public abstract class MovingObject : MonoBehaviour
         //Get a component reference to this object's Rigidbody2D
         rb2D = GetComponent<Rigidbody2D>();
 
-        //By storing the reciprocal of the move time we can use it by multiplying instead of dividing, this is more efficient.
-        inverseMoveTime = 1f / (moveTime/1000);
+        SetMoveTime(moveTime);
 
         animator = GetComponent<Animator>();
+    }
+
+    public virtual void SetMoveTime(float _moveTime)
+    {
+        //By storing the reciprocal of the move time we can use it by multiplying instead of dividing, this is more efficient.
+        inverseMoveTime = 1f / (_moveTime / 1000);
     }
 
     //The virtual keyword means AttemptMove can be overridden by inheriting classes using the override keyword.
@@ -68,7 +73,6 @@ public abstract class MovingObject : MonoBehaviour
     //Move takes parameters for x direction, y direction and a RaycastHit2D to check collision.
     protected bool Move(int xDir, int yDir, out RaycastHit2D hit)
     {
-        
         if (isMoving)
         {
             hit = new RaycastHit2D();

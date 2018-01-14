@@ -12,6 +12,7 @@ TagManager:
   - Key
   - Exit
   - Switch
+  - Mask
   layers:
   - Default
   - TransparentFX
@@ -60,4 +61,7 @@ TagManager:
     locked: 0
   - name: Walls
     uniqueID: 1987655491
+    locked: 0
+  - name: UI
+    uniqueID: 94170297
     locked: 0
