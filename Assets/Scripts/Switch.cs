@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Switch : MonoBehaviour
+public class Switch : Wall
 {
 
     public List<GameObject> SubordinateGameObjects;
+
+    private DateTime cooldown = DateTime.Now;
 
 	// Use this for initialization
 	void Start () {
@@ -19,12 +22,25 @@ public class Switch : MonoBehaviour
 
     public void Activate()
     {
-        var timer = 0.1f;
-        foreach (var subordinateGameObject in SubordinateGameObjects)
+        if ((DateTime.Now-cooldown).Seconds > 5)
         {
-            StartCoroutine(ActivateWater(subordinateGameObject,timer));
-            timer+=0.1f;
+            var timer = 0.1f;
+            foreach (var subordinateGameObject in SubordinateGameObjects)
+            {
+                if (subordinateGameObject.CompareTag("Water"))
+                {
+                    StartCoroutine(ActivateWater(subordinateGameObject, timer));
+                    timer += 0.1f;
+                }
+                else if (subordinateGameObject.CompareTag("Stone"))
+                {
+                    subordinateGameObject.SetActive(true);
+                }
+
+            }
+            cooldown = DateTime.Now;
         }
+        
     }
 
     private IEnumerator ActivateWater(GameObject water, float wait)

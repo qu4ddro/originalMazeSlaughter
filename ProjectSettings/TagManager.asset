@@ -13,6 +13,8 @@ TagManager:
   - Exit
   - Switch
   - Mask
+  - Water
+  - Stone
   layers:
   - Default
   - TransparentFX
