@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakableWall : MonoBehaviour {
+public class BreakableWall : Wall {
 
     public Sprite dmgSprite;
     public int health;                          //hit points for the wall.

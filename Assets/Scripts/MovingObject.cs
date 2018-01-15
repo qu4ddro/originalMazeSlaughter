@@ -18,7 +18,10 @@ public abstract class MovingObject : MonoBehaviour
     private Rigidbody2D rb2D;               //The Rigidbody2D component attached to this object.
     private float inverseMoveTime;          //Used to make movement more efficient.
     private Animator animator;
-    private float moveTime = 100f;           //Time it will take object to move, in milliseconds.
+    public float moveTime = 100f;           //Time it will take object to move, in milliseconds.
+
+    protected int _horizontal = 0;
+    protected int _vertical = 0;
 
 
     //Protected, virtual functions can be overridden by inheriting classes.
@@ -116,7 +119,7 @@ public abstract class MovingObject : MonoBehaviour
         return false;
     }
 
-    private void SetDirection(int x, int y)
+    protected void SetDirection(int x, int y)
     {
         if (x>0)
         {
@@ -133,6 +136,30 @@ public abstract class MovingObject : MonoBehaviour
         if (y<0)
         {
             direction=Direction.South;
+        }
+    }
+
+    protected void CheckDirectionAndSetMovement()
+    {
+        if (direction == Direction.North)
+        {
+            _horizontal = 0;
+            _vertical = 1;
+        }
+        if (direction == Direction.East)
+        {
+            _horizontal = 1;
+            _vertical = 0;
+        }
+        if (direction == Direction.South)
+        {
+            _horizontal = 0;
+            _vertical = -1;
+        }
+        if (direction == Direction.West)
+        {
+            _horizontal = -1;
+            _vertical = 0;
         }
     }
 
@@ -195,5 +222,61 @@ public abstract class MovingObject : MonoBehaviour
         var hit = Physics2D.Linecast(gameObject.transform.position, end , blockingLayer);
         boxCollider.enabled = true;
         return hit;
+    }
+
+    protected void ChangeDirectionToRight()
+    {
+        if (direction == Direction.North)
+        {
+            direction = Direction.East;
+            _horizontal = 1;
+            _vertical = 0;
+        }
+        else if (direction == Direction.East)
+        {
+            direction = Direction.South;
+            _horizontal = 0;
+            _vertical = -1;
+        }
+        else if (direction == Direction.South)
+        {
+            direction = Direction.West;
+            _horizontal = -1;
+            _vertical = 0;
+        }
+        else if (direction == Direction.West)
+        {
+            direction = Direction.North;
+            _horizontal = 0;
+            _vertical = 1;
+        }
+    }
+
+    protected void ChangeDirectionToLeft()
+    {
+        if (direction == Direction.North)
+        {
+            direction = Direction.West;
+            _horizontal = -1;
+            _vertical = 0;
+        }
+        else if (direction == Direction.East)
+        {
+            direction = Direction.North;
+            _horizontal = 0;
+            _vertical = 1;
+        }
+        else if (direction == Direction.South)
+        {
+            direction = Direction.East;
+            _horizontal = 1;
+            _vertical = 0;
+        }
+        else if (direction == Direction.West)
+        {
+            direction = Direction.South;
+            _horizontal = 0;
+            _vertical = -1;
+        }
     }
 }

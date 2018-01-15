@@ -5,12 +5,7 @@ using UnityEngine;
 
 public class Killer : MovingObject
 {
-
-    private int _horizontal = 0;
-    private int _vertical = 0;
-    private DateTime time;
-
-
+    
     // Use this for initialization
     void Start()
     {
@@ -35,95 +30,20 @@ public class Killer : MovingObject
 
         if (!base.isMoving)
         {
-            AttemptMove<BreakableWall>(_horizontal, _vertical);
+            AttemptMove<Wall>(_horizontal, _vertical);
         }
     }
 
-    private void CheckDirectionAndSetMovement()
-    {
-        if (direction == Direction.North)
-        {
-            _horizontal = 0;
-            _vertical = 1;
-        }
-        if (direction == Direction.East)
-        {
-            _horizontal = 1;
-            _vertical = 0;
-        }
-        if (direction == Direction.South)
-        {
-            _horizontal = 0;
-            _vertical = -1;
-        }
-        if (direction == Direction.West)
-        {
-            _horizontal = -1;
-            _vertical = 0;
-        }
-    }
+    
 
     protected override void OnCantMove<T>(T component)
     {
         ChangeDirectionToLeft();
-        AttemptMove<BreakableWall>(_horizontal, _vertical);
+        AttemptMove<Wall>(_horizontal, _vertical);
     }
 
-    private void ChangeDirectionToRight()
-    {
-        if (direction == Direction.North)
-        {
-            direction = Direction.East;
-            _horizontal = 1;
-            _vertical = 0;
-        }
-        else if (direction == Direction.East)
-        {
-            direction = Direction.South;
-            _horizontal = 0;
-            _vertical = -1;
-        }
-        else if (direction == Direction.South)
-        {
-            direction = Direction.West;
-            _horizontal = -1;
-            _vertical = 0;
-        }
-        else if (direction == Direction.West)
-        {
-            direction = Direction.North;
-            _horizontal = 0;
-            _vertical = 1;
-        }
-    }
 
-    private void ChangeDirectionToLeft()
-    {
-        if (direction == Direction.North)
-        {
-            direction = Direction.West;
-            _horizontal = -1;
-            _vertical = 0;
-        }
-        else if (direction == Direction.East)
-        {
-            direction = Direction.North;
-            _horizontal = 0;
-            _vertical = 1;
-        }
-        else if (direction == Direction.South)
-        {
-            direction = Direction.East;
-            _horizontal = 1;
-            _vertical = 0;
-        }
-        else if (direction == Direction.West)
-        {
-            direction = Direction.South;
-            _horizontal = 0;
-            _vertical = -1;
-        }
-    }
+    
     
     private void MoveKiller()
     {
