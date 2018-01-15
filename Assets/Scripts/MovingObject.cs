@@ -10,7 +10,6 @@ public enum Direction
 //The abstract keyword enables you to create classes and class members that are incomplete and must be implemented in a derived class.
 public abstract class MovingObject : MonoBehaviour
 {
-    public float moveTime = 100f;           //Time it will take object to move, in milliseconds.
     public LayerMask blockingLayer;         //Layer on which collision will be checked.
     public bool isMoving;
     public Direction direction;
@@ -18,7 +17,9 @@ public abstract class MovingObject : MonoBehaviour
     private BoxCollider2D boxCollider;      //The BoxCollider2D component attached to this object.
     private Rigidbody2D rb2D;               //The Rigidbody2D component attached to this object.
     private float inverseMoveTime;          //Used to make movement more efficient.
-    private Animator animator; 
+    private Animator animator;
+    private float moveTime = 100f;           //Time it will take object to move, in milliseconds.
+
 
     //Protected, virtual functions can be overridden by inheriting classes.
     protected virtual void Start()
@@ -29,15 +30,20 @@ public abstract class MovingObject : MonoBehaviour
         //Get a component reference to this object's Rigidbody2D
         rb2D = GetComponent<Rigidbody2D>();
 
-        SetMoveTime(moveTime);
+        this.MoveTime= moveTime;
 
         animator = GetComponent<Animator>();
     }
 
-    public virtual void SetMoveTime(float _moveTime)
+    public float MoveTime
     {
-        //By storing the reciprocal of the move time we can use it by multiplying instead of dividing, this is more efficient.
-        inverseMoveTime = 1f / (_moveTime / 1000);
+        get { return moveTime; }
+        set
+        {
+            moveTime = value;
+            inverseMoveTime = 1f / (moveTime / 1000);
+
+        }
     }
 
     //The virtual keyword means AttemptMove can be overridden by inheriting classes using the override keyword.

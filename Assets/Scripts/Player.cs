@@ -59,32 +59,34 @@ public class Player : MovingObject
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Check if the tag of the trigger collided with is Exit.
-        if (other.tag == "Exit")
+        switch (other.tag)
         {
-            //Disable the player object since level is over.
-            enabled = false;
-            if (hasItem("Key"))
-                GameManager.instance.NextLevel();
-            else
-            {
-                other.GetComponent<BoxCollider2D>().enabled = false;
-                Debug.Log("No Key! Can't Escape");
-                other.GetComponent<BoxCollider2D>().enabled = true;
-            }
-        }
-        else if (other.tag == "Syringe")
-        {
-            transform.Find("Syringe").gameObject.SetActive(true);
-            Destroy(other.gameObject);
-        }
-        else if (other.tag == "Torch")
-        {
-            transform.Find("Torch").gameObject.SetActive(true);
-            Destroy(other.gameObject);
-        }
-        else if (other.tag == "Key" || other.tag == "Axe" || other.tag == "Trap")
-        {
-            PickupItem(other);
+            case "Exit":
+                //Disable the player object since level is over.
+                enabled = false;
+                if (hasItem("Key"))
+                    GameManager.instance.NextLevel();
+                else
+                {
+                    other.GetComponent<BoxCollider2D>().enabled = false;
+                    Debug.Log("No Key! Can't Escape");
+                    other.GetComponent<BoxCollider2D>().enabled = true;
+                }
+
+                break;
+            case "Syringe":
+                transform.Find("Syringe").gameObject.SetActive(true);
+                Destroy(other.gameObject);
+                break;
+            case "Torch":
+                transform.Find("Torch").gameObject.SetActive(true);
+                Destroy(other.gameObject);
+                break;
+            case "Key":
+            case "Axe":
+            case "Trap":
+                PickupItem(other);
+                break;
         }
     }
 

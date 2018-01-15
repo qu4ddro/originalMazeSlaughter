@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class TorchScript : MonoBehaviour
 {
-
     public float TorchMultiplier = 5.0f;
     public float TorchDuration = 5.0f;
     public float FadeDuration = 0.5f;

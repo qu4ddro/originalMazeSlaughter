@@ -15,7 +15,7 @@ public class SyringeScript : MonoBehaviour
     void OnEnable()
     {
         Player = GameObject.FindWithTag("Player");
-        Player.GetComponent<Player>().SetMoveTime(Player.GetComponent<Player>().moveTime / SpeedBoostMultiplier);
+        Player.GetComponent<Player>().MoveTime = Player.GetComponent<Player>().MoveTime / SpeedBoostMultiplier;
         StartCoroutine(DeactivateAfterDuration());
     }
 
@@ -24,7 +24,7 @@ public class SyringeScript : MonoBehaviour
         // Wait for an amount of Time before resetting
         yield return new WaitForSeconds(SpeedBoostDuration);
         //Reset MoveTime to standard MoveTime
-        Player.GetComponent<Player>().SetMoveTime(Player.GetComponent<Player>().moveTime);
+        Player.GetComponent<Player>().MoveTime = Player.GetComponent<Player>().MoveTime * SpeedBoostMultiplier;
         //Disable this Object so it is hidden
         this.gameObject.SetActive(false);
     }
