@@ -53,6 +53,20 @@ public class Player : MovingObject
         {
             UseAxe();
         }
+        if (Input.GetKeyDown("e"))
+        {
+            UseSwitch();
+        }
+    }
+
+    private void UseSwitch()
+    {
+        var hit = CastInCurrentDirection();
+        var hittedGameObject = hit.rigidbody.gameObject.GetComponent<Switch>();
+        if (hittedGameObject.GetType() == typeof(Switch))
+        {
+            hittedGameObject.Activate();
+        }
     }
 
     //OnCantMove overrides the abstract function OnCantMove in MovingObject.
