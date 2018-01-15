@@ -35,7 +35,7 @@ public class Killer : MovingObject
 
         if (!base.isMoving)
         {
-            AttemptMove<Wall>(_horizontal, _vertical);
+            AttemptMove<BreakableWall>(_horizontal, _vertical);
         }
     }
 
@@ -66,7 +66,7 @@ public class Killer : MovingObject
     protected override void OnCantMove<T>(T component)
     {
         ChangeDirectionToLeft();
-        AttemptMove<Wall>(_horizontal, _vertical);
+        AttemptMove<BreakableWall>(_horizontal, _vertical);
     }
 
     private void ChangeDirectionToRight()
@@ -138,7 +138,7 @@ public class Killer : MovingObject
         {
             //Call AttemptMove passing in the generic parameter Wall, since that is what Player may interact with if they encounter one (by attacking it)
             //Pass in horizontal and vertical as parameters to specify the direction to move Player in.
-            AttemptMove<Wall>(_horizontal, _vertical);
+            AttemptMove<BreakableWall>(_horizontal, _vertical);
             Debug.Log(direction.ToString());
         }
     }

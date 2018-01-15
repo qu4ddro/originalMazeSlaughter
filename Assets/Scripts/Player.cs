@@ -9,7 +9,6 @@ public class Player : MovingObject
 {
     public string[] items = new string[3];
 
-
     private void Update()
     {
         int horizontal = 0;     //Used to store the horizontal move direction.
@@ -33,7 +32,7 @@ public class Player : MovingObject
 
             //Call AttemptMove passing in the generic parameter Wall, since that is what Player may interact with if they encounter one (by attacking it)
             //Pass in horizontal and vertical as parameters to specify the direction to move Player in.
-            AttemptMove<Wall>(horizontal, vertical);
+            AttemptMove<BreakableWall>(horizontal, vertical);
         }
 
         //Schritte-Sounds
@@ -48,14 +47,13 @@ public class Player : MovingObject
 
     }
 
-
     //OnCantMove overrides the abstract function OnCantMove in MovingObject.
     //It takes a generic parameter T which in the case of Player is a Wall which the player can attack and destroy.
     protected override void OnCantMove<T>(T component)
     {
-        Debug.Log("Player cant move there");
+        BreakableWall breakableWall = component as BreakableWall;
+        breakableWall.DamageWall(1);
     }
-
 
     //OnTriggerEnter2D is sent when another object enters a trigger collider attached to this object (2D physics only).
     private void OnTriggerEnter2D(Collider2D other)
@@ -84,7 +82,7 @@ public class Player : MovingObject
             transform.Find("Torch").gameObject.SetActive(true);
             Destroy(other.gameObject);
         }
-        else if (other.tag == "Key" || other.tag == "Axe" || other.tag == "Trap" ||  other.tag == "Key")
+        else if (other.tag == "Key" || other.tag == "Axe" || other.tag == "Trap")
         {
             PickupItem(other);
         }
@@ -108,9 +106,21 @@ public class Player : MovingObject
             {
                 items[i] = pickedUpItem.gameObject.tag;
                 Destroy(pickedUpItem.gameObject);
+                if (pickedUpItem.tag == "Key")
+                {
+                    transform.Find("Key").gameObject.SetActive(true);
+                }
+                else if (pickedUpItem.tag == "Axe")
+                {
+                    transform.Find("Axe").gameObject.SetActive(true);
+                }
+                else if (pickedUpItem.tag == "Trap")
+                {
+                    transform.Find("Trap").gameObject.SetActive(true);
+                }
                 return;
             }
+            
         }
     }
-
 }

@@ -10,7 +10,7 @@ public class TorchScript : MonoBehaviour
 
     public float TorchMultiplier = 5.0f;
     public float TorchDuration = 5.0f;
-    public float FadeDuration = 1.0f;
+    public float FadeDuration = 0.5f;
 
     private GameObject Mask;
 
@@ -29,7 +29,6 @@ public class TorchScript : MonoBehaviour
     {
         Vector3 currentSize = Mask.GetComponent<Transform>().localScale;
         float remainingDistance = _newMaskSize.magnitude - currentSize.magnitude;
-        Debug.Log("FadeStart");
         bool rising = remainingDistance > 0;
 
         float elapsedTime = 0;
@@ -42,11 +41,9 @@ public class TorchScript : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        Debug.Log("FadeStop");
         if (!rising)
         {
             this.gameObject.SetActive(false);
-            Debug.Log("Ich schalt mich ab");
         }
     }
 
@@ -55,13 +52,9 @@ public class TorchScript : MonoBehaviour
         // Wait for an amount of Time before resetting
         yield return new WaitForSeconds(TorchDuration);
 
-        Debug.Log("Licht geht wieder aus");
-
         Vector3 newMaskSize = Mask.GetComponent<Transform>().localScale / TorchMultiplier;
         
         StopCoroutine("FadeToNewMaskSize");
         StartCoroutine("FadeToNewMaskSize",newMaskSize);
-
-        
     }
 }
