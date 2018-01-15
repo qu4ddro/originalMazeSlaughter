@@ -140,6 +140,36 @@ Transform:
   m_Father: {fileID: 4874432843605198}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 107.46}
+<<<<<<< HEAD
+=======
+--- !u!4 &4171213146576654
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1122444277607684}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4550368846130090}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4550368846130090
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310909885975564}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5555556, z: 1}
+  m_Children:
+  - {fileID: 4171213146576654}
+  m_Father: {fileID: 4874432843605198}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> fd9dab1... Feat(Inventory+Axe):Done
 --- !u!4 &4606629432495184
 Transform:
   m_ObjectHideFlags: 1
@@ -381,12 +411,25 @@ MonoBehaviour:
   blockingLayer:
     serializedVersion: 2
     m_Bits: 256
+  boxCollider: {fileID: 0}
   isMoving: 0
   direction: 0
+<<<<<<< HEAD
   items:
   - 
   - 
   - 
+=======
+  Inventory: []
+  InventorySize: 3
+--- !u!124 &124505614865501382
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310909885975564}
+  m_Enabled: 1
+>>>>>>> fd9dab1... Feat(Inventory+Axe):Done
 --- !u!212 &212490736198888322
 SpriteRenderer:
   m_ObjectHideFlags: 1

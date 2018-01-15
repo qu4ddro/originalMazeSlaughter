@@ -14,7 +14,7 @@ public abstract class MovingObject : MonoBehaviour
     public bool isMoving;
     public Direction direction;
 
-    private BoxCollider2D boxCollider;      //The BoxCollider2D component attached to this object.
+    public BoxCollider2D boxCollider;      //The BoxCollider2D component attached to this object.
     private Rigidbody2D rb2D;               //The Rigidbody2D component attached to this object.
     private float inverseMoveTime;          //Used to make movement more efficient.
     private Animator animator;
@@ -76,6 +76,7 @@ public abstract class MovingObject : MonoBehaviour
     //Move takes parameters for x direction, y direction and a RaycastHit2D to check collision.
     protected bool Move(int xDir, int yDir, out RaycastHit2D hit)
     {
+        SetDirection(xDir, yDir);
         if (isMoving)
         {
             hit = new RaycastHit2D();
@@ -115,6 +116,26 @@ public abstract class MovingObject : MonoBehaviour
         return false;
     }
 
+    private void SetDirection(int x, int y)
+    {
+        if (x>0)
+        {
+            direction = Direction.East;
+        }
+        if (x<0)
+        {
+            direction = Direction.West;
+        }
+        if (y>0)
+        {
+            direction = Direction.North;
+        }
+        if (y<0)
+        {
+            direction=Direction.South;
+        }
+    }
+
     //Co-routine for moving units from one space to next, takes a parameter end to specify where to move to.
     protected IEnumerator SmoothMovement(Vector3 end)
     {
@@ -151,5 +172,28 @@ public abstract class MovingObject : MonoBehaviour
     //OnCantMove will be overriden by functions in the inheriting classes.
     protected abstract void OnCantMove<T>(T component)
         where T : Component;
-    
+
+    public RaycastHit2D CastInCurrentDirection()
+    {
+        Vector2 end = gameObject.transform.position;
+        switch (direction)
+        {
+            case Direction.North:
+                end= gameObject.transform.position + Vector3.up;
+                break;
+            case Direction.South:
+                end = gameObject.transform.position + Vector3.down;
+                break;
+            case Direction.East:
+                end = gameObject.transform.position + Vector3.right;
+                break;
+            case Direction.West:
+                end = gameObject.transform.position + Vector3.left;
+                break;
+        }
+        boxCollider.enabled = false;
+        var hit = Physics2D.Linecast(gameObject.transform.position, end , blockingLayer);
+        boxCollider.enabled = true;
+        return hit;
+    }
 }

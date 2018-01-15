@@ -5,7 +5,7 @@ using UnityEngine;
 public class BreakableWall : MonoBehaviour {
 
     public Sprite dmgSprite;
-    public int health = 3;                          //hit points for the wall.
+    public int health;                          //hit points for the wall.
 
     private SpriteRenderer spriteRenderer;
 
