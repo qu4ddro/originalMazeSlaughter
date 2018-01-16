@@ -65,15 +65,12 @@ public class Player : MovingObject
         }
     }
 
-    //OnCantMove overrides the abstract function OnCantMove in MovingObject.
-    //It takes a generic parameter T which in the case of Player is a Wall which the player can attack and destroy.
     protected override void OnCantMove(GameObject hitted)
     {
-        Debug.Log(hitted);
-
+        
     }
 
-    //OnTriggerEnter2D is sent when another object enters a trigger collider attached to this object (2D physics only).
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Check if the tag of the trigger collided with is Exit.
@@ -82,7 +79,7 @@ public class Player : MovingObject
             case "Exit":
                 //Disable the player object since level is over.
                 enabled = false;
-                if (Inventory.Contains(new Key()))
+                if (Inventory.OfType<Key>().Any())
                     GameManager.instance.NextLevel();
                 else
                 {
@@ -157,5 +154,10 @@ public class Player : MovingObject
                 }
             }
         }
+    }
+
+    public override void Die()
+    {
+        GameManager.instance.GameOver();    
     }
 }

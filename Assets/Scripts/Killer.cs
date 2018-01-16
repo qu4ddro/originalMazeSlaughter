@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Killer : MovingObject
 {
+    public AudioClip[] RandomClips;
     
     // Use this for initialization
     protected override void Start()
@@ -36,8 +37,16 @@ public class Killer : MovingObject
 
     protected override void OnCantMove(GameObject hitted)
     {
-        ChangeDirectionToLeft();
-        AttemptMove(_horizontal, _vertical);
+        if (hitted.gameObject.GetComponent<Wall>())
+        {
+            ChangeDirectionToLeft();
+            AttemptMove(_horizontal, _vertical);
+        }
+        else if (hitted.gameObject.GetComponent<Player>())
+        {
+            hitted.gameObject.GetComponent<Player>().Die();
+        }
+
     }
 
     private void MoveKiller()
@@ -60,12 +69,6 @@ public class Killer : MovingObject
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Check if the tag of the trigger collided with is Exit.
-        if (other.tag == "Exit")
-        {
-            //Disable the player object since level is over.
-            enabled = false;
-        }
+        
     }
-
 }

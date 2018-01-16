@@ -10,15 +10,18 @@ public class GameManager : MonoBehaviour
     public float levelStartDelay = 2f;                      //Time to wait before starting level, in seconds.
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 
-    private GameObject levelImage;                          //Image to block out level as levels are being set up, background for levelText.
+    public GameObject LevelImage;
+    public Sprite[] LevelImages;
+    public GameObject DeathScreen;
+    public GameObject WinScreen;
     //private bool doingSetup = true;                         //Boolean to check if we're setting up board, prevent Player from moving during setup.
 
     public int level = 1;
-
     public Object[] scenesToLoad;
-
     public GameObject player;
+    public bool PlayerIsAlive = true;
 
+    public bool doingSetup;
 
     //Awake is always called before any Start functions
     void Awake()
@@ -58,40 +61,45 @@ public class GameManager : MonoBehaviour
     }
 
 
-    //Initializes the game for each level.
     void InitGame()
     {
-        // ...and start a coroutine that will load the desired scene.
+        doingSetup = true;
+
         StartCoroutine(LoadNewScene(scenesToLoad[level-1]));
     }
 
 
-    //Hides black image used between levels
-    void HideLevelImage()
-    {
-        //Disable the levelImage gameObject.
-        levelImage.SetActive(false);
-
-        //Set doingSetup to false allowing player to move again.
-        //doingSetup = false;
-    }
-
     //GameOver is called when the player reaches 0 food points
     public void GameOver()
     {
+        PlayerIsAlive = false;
+        DeathScreen.SetActive(true);
         //Disable this GameManager.
-        enabled = false;
     }
 
     public void NextLevel()
     {
         level++;
-        StartCoroutine(LoadNewScene(scenesToLoad[level-1]));
+        if (scenesToLoad[level - 1])
+        {
+            StartCoroutine(LoadNewScene(scenesToLoad[level - 1]));
+        }
+        else if (scenesToLoad[level - 1])
+        {
+            GameWon();
+        }
+    }
+
+    private void GameWon()
+    {
+        WinScreen.SetActive(true);
     }
 
     // The coroutine runs on its own at the same time as Update() and takes an integer indicating which scene to load.
     IEnumerator LoadNewScene(Object scene)
     {
+        LevelImage.GetComponent<Image>().sprite = LevelImages[level-1];
+        LevelImage.SetActive(true);
 
         // Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
          AsyncOperation async = SceneManager.LoadSceneAsync(scene.name);
@@ -99,9 +107,15 @@ public class GameManager : MonoBehaviour
         // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
         while (!async.isDone)
         {
-            Debug.Log("Waiting for Scene...");
             yield return null;
         }
 
+        Invoke("FinishedLoading",levelStartDelay);
+    }
+
+    private void FinishedLoading()
+    {
+        doingSetup = false;
+        LevelImage.SetActive(false);
     }
 }

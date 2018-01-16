@@ -14,7 +14,7 @@ public abstract class MovingObject : MonoBehaviour
     public bool isMoving;
     public Direction direction;
 
-    public BoxCollider2D boxCollider;      //The BoxCollider2D component attached to this object.
+    private BoxCollider2D boxCollider;      //The BoxCollider2D component attached to this object.
     private Rigidbody2D rb2D;               //The Rigidbody2D component attached to this object.
     private float inverseMoveTime;          //Used to make movement more efficient.
     private Animator animator;
@@ -22,7 +22,6 @@ public abstract class MovingObject : MonoBehaviour
 
     protected int _horizontal = 0;
     protected int _vertical = 0;
-
 
     //Protected, virtual functions can be overridden by inheriting classes.
     protected virtual void Start()
@@ -36,6 +35,7 @@ public abstract class MovingObject : MonoBehaviour
         this.MoveTime= moveTime;
 
         animator = GetComponent<Animator>();
+
     }
 
     public float MoveTime
@@ -78,7 +78,7 @@ public abstract class MovingObject : MonoBehaviour
     protected bool Move(int xDir, int yDir, out RaycastHit2D hit)
     {
         SetDirection(xDir, yDir);
-        if (isMoving)
+        if (isMoving || GameManager.instance.doingSetup)
         {
             hit = new RaycastHit2D();
             
@@ -218,7 +218,7 @@ public abstract class MovingObject : MonoBehaviour
                 break;
         }
         boxCollider.enabled = false;
-        var hit = Physics2D.Linecast(gameObject.transform.position, end , blockingLayer);
+        var hit = Physics2D.Linecast(gameObject.transform.position, end, blockingLayer);
         boxCollider.enabled = true;
         return hit;
     }
@@ -277,5 +277,10 @@ public abstract class MovingObject : MonoBehaviour
             _horizontal = 0;
             _vertical = -1;
         }
+    }
+
+    public virtual void Die()
+    {
+        Destroy(this.gameObject);
     }
 }

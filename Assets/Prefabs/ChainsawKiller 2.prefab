@@ -19,11 +19,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4689330599565626}
-  - component: {fileID: 212506036302819316}
   - component: {fileID: 61399724945659048}
   - component: {fileID: 50999383945330986}
-  - component: {fileID: 114447268952336990}
+  - component: {fileID: 212506036302819316}
   - component: {fileID: 95687628029731160}
+  - component: {fileID: 114447268952336990}
   m_Layer: 0
   m_Name: ChainsawKiller 2
   m_TagString: Untagged
@@ -51,7 +51,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626442502270528}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -117,12 +117,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0695a8efe1d6d498f4142df5ed2837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 350
   blockingLayer:
     serializedVersion: 2
     m_Bits: 256
   isMoving: 0
   direction: 1
+  moveTime: 350
+  RandomClips: []
 --- !u!212 &212506036302819316
 SpriteRenderer:
   m_ObjectHideFlags: 1
