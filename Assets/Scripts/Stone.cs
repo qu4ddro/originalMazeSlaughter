@@ -6,7 +6,7 @@ using UnityEngine;
 public class Stone : MovingObject {
 
 	// Use this for initialization
-    void Start()
+    protected override void Start()
     {
         base.Start();
         CheckDirectionAndSetMovement();
