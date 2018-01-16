@@ -25,13 +25,14 @@ public class Stone : MovingObject {
 
     private void KeepOnRolling()
     {
-        AttemptMove<Wall>(_horizontal,_vertical);
+        AttemptMove(_horizontal,_vertical);
     }
 
-    protected override void OnCantMove<T>(T component)
+    protected override void OnCantMove(GameObject hitted)
     {
-        if (component.GetType() == typeof(BreakableWall))
-            Destroy(component.gameObject);
+        Debug.Log(hitted);
+        if (hitted.GetType() == typeof(BreakableWall))
+            Destroy(hitted.gameObject);
         Destroy(this.gameObject);
     }
 }
