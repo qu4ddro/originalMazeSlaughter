@@ -15,6 +15,7 @@ TagManager:
   - Mask
   - Water
   - Stone
+  - TrapActive
   layers:
   - Default
   - TransparentFX

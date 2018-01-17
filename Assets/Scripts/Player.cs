@@ -13,6 +13,8 @@ public class Player : MovingObject
     public List<Items> Inventory = new List<Items>();
     public int InventorySize;
 
+    public GameObject Trap;
+
     private void Update()
     {
         int horizontal = 0; //Used to store the horizontal move direction.
@@ -49,19 +51,13 @@ public class Player : MovingObject
         {
             UseAxe();
         }
+        if (Input.GetKeyDown("2"))
+        {
+            UseTrap();
+        }
         if (Input.GetKeyDown("e"))
         {
             UseSwitch();
-        }
-    }
-
-    private void UseSwitch()
-    {
-        var hit = CastInCurrentDirection();
-        var hittedGameObject = hit.rigidbody.gameObject.GetComponent<Switch>();
-        if (hittedGameObject.GetType() == typeof(Switch))
-        {
-            hittedGameObject.Activate();
         }
     }
 
@@ -70,17 +66,17 @@ public class Player : MovingObject
         
     }
 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Check if the tag of the trigger collided with is Exit.
         switch (other.tag)
         {
             case "Exit":
-                //Disable the player object since level is over.
-                enabled = false;
                 if (Inventory.OfType<Key>().Any())
+                {
+                    this.transform.Find("Key").GetComponent<AudioSource>().Play();
                     GameManager.instance.NextLevel();
+                }
                 else
                 {
                     other.GetComponent<BoxCollider2D>().enabled = false;
@@ -126,13 +122,33 @@ public class Player : MovingObject
             }
         }
     }
+    private void UseTrap()
+    {
+        if (Inventory.OfType<Trap>().Any())
+        {
+            var trap = Inventory.First(select => select.GetType() == typeof(Trap)) as Trap;
+            Inventory.Remove(trap);
+            transform.Find("Trap").gameObject.SetActive(false);
+            Instantiate<GameObject>(Trap, this.transform.position, Quaternion.identity);
+
+        }
+    }
+
+    private void UseSwitch()
+    {
+        var hit = CastInCurrentDirection();
+        var hittedGameObject = hit.rigidbody.gameObject.GetComponent<Switch>();
+        if (hittedGameObject.GetType() == typeof(Switch))
+        {
+            hittedGameObject.Activate();
+        }
+    }
 
     private void UseAxe()
     {
         if (Inventory.OfType<Axe>().Any())
         {
             var axe = Inventory.First(select => select.GetType() == typeof(Axe)) as Axe;
-            Inventory.Remove(axe);
             //ToDo: animation
             var hit = CastInCurrentDirection();
             var hittedGameObject = hit.rigidbody.gameObject.GetComponent<BreakableWall>();
@@ -149,6 +165,7 @@ public class Player : MovingObject
                     }
                     else
                     {
+                        Inventory.Remove(axe);
                         transform.Find("Axe").gameObject.SetActive(false);
                     }
                 }

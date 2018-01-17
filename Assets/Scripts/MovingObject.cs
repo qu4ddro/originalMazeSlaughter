@@ -23,6 +23,8 @@ public abstract class MovingObject : MonoBehaviour
     protected int _horizontal = 0;
     protected int _vertical = 0;
 
+    protected float defaultMoveTime;
+
     //Protected, virtual functions can be overridden by inheriting classes.
     protected virtual void Start()
     {
@@ -36,6 +38,8 @@ public abstract class MovingObject : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
+        defaultMoveTime = MoveTime;
+
     }
 
     public float MoveTime
@@ -47,6 +51,12 @@ public abstract class MovingObject : MonoBehaviour
             inverseMoveTime = 1f / (moveTime / 1000);
 
         }
+    }
+
+
+    public void SetDefaultSpeed()
+    {
+        MoveTime = defaultMoveTime;
     }
 
     //The virtual keyword means AttemptMove can be overridden by inheriting classes using the override keyword.
