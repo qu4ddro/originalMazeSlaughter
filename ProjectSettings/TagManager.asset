@@ -17,6 +17,7 @@ TagManager:
   - Stone
   - TrapActive
   - Light
+  - SoundManager
   layers:
   - Default
   - TransparentFX

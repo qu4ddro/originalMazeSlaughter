@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114175748238519696}
   m_Layer: 0
   m_Name: SoundManager
-  m_TagString: Untagged
+  m_TagString: SoundManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,3 +137,4 @@ MonoBehaviour:
   RandomAudioClips:
   - {fileID: 0}
   - {fileID: 0}
+  WinAudioClip: {fileID: 8300000, guid: a1d1905ef31bdce4c87288545cbd29ce, type: 3}

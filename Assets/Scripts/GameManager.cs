@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     public bool doingSetup;
 
+    private SoundController soundManager;
+
     //Awake is always called before any Start functions
     void Awake()
     {
@@ -48,9 +50,11 @@ public class GameManager : MonoBehaviour
     
     public void NextLevel()
     {
+        StartCoroutine(soundManager.FadeSound(0, .1f));
         this.WinScreen.SetActive(true);
         doingSetup = true;
         level++;
+        soundManager.PlayWinAudioClip();
         if (scenesToLoad[level - 1])
         {
             Invoke("LoadNewScene", 3);
@@ -93,12 +97,11 @@ public class GameManager : MonoBehaviour
         */
 
         Invoke("FinishedLoading", levelStartDelay);
-
     }
 
     private void FinishedLoading()
     {
-        Debug.Log("Finished");
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundController>();
         doingSetup = false;
         LevelImage.SetActive(false);
     }
