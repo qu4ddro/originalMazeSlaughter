@@ -13,13 +13,15 @@ public class Torch : Items
 
     private GameObject Light;
 
-
     // Use this for initialization
     void OnEnable()
     {
         Light = GameObject.FindWithTag("Light");
 
         float newLightSize = Light.GetComponent<Light>().range * TorchMultiplier;
+
+        myAudioSource.PlayOneShot(UseItemAudioClip);
+
         StartCoroutine("FadeToNewLightSize",newLightSize);
         StartCoroutine("DeactivateAfterDuration");
     }

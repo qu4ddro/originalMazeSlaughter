@@ -78,7 +78,7 @@ public class Player : MovingObject
             case "Exit":
                 if (Inventory.OfType<Key>().Any())
                 {
-                    this.transform.Find("Key").GetComponent<AudioSource>().Play();
+                    this.transform.Find("Key").GetComponent<Items>().PlayUseSound();
                     GameManager.instance.NextLevel();
                 }
                 else

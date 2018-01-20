@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 212994771001990436}
   - component: {fileID: 114318442575217116}
   - component: {fileID: 82489709935697154}
+  - component: {fileID: 114104074916462730}
   m_Layer: 0
   m_Name: Syringe
   m_TagString: Syringe
@@ -57,6 +58,7 @@ GameObject:
   - component: {fileID: 4892882995615798}
   - component: {fileID: 212967918067071206}
   - component: {fileID: 82989014930420836}
+  - component: {fileID: 114878100776696738}
   m_Layer: 0
   m_Name: Trap
   m_TagString: Trap
@@ -154,7 +156,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1847538911328894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.5, y: -2.5, z: 0}
+  m_LocalPosition: {x: 15.5, y: -0.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4586096218025230}
@@ -760,6 +762,21 @@ MonoBehaviour:
   PickupItemAudioClip: {fileID: 8300000, guid: 290fc188864cbdd4a8dc359b32cd4b2c, type: 3}
   UseItemAudioClip: {fileID: 8300000, guid: e62dae09fdfb8244590e3a77a4cb7287, type: 3}
   Health: 2
+--- !u!114 &114104074916462730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206616524512906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae993852d30afd645a808d329320774d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickupItemAudioClip: {fileID: 8300000, guid: 290fc188864cbdd4a8dc359b32cd4b2c, type: 3}
+  UseItemAudioClip: {fileID: 8300000, guid: 2f9f4788635fd2643854d0c41cfe742f, type: 3}
+  SpeedBoostMultiplier: 2
+  SpeedBoostDuration: 5
 --- !u!114 &114150078055574550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -824,6 +841,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickupItemAudioClip: {fileID: 8300000, guid: 549cb0dd0eafc9e45934b431a1fd67ef, type: 3}
   UseItemAudioClip: {fileID: 8300000, guid: a372bcd1291b3f5468e4524b2987905b, type: 3}
+--- !u!114 &114878100776696738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1505186600427638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625a1c767e30d41428759b959ed0d83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickupItemAudioClip: {fileID: 0}
+  UseItemAudioClip: {fileID: 0}
+  trappedTime: 3
 --- !u!212 &212125414046770020
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -8,7 +8,7 @@ public class Items : MonoBehaviour
     public AudioClip PickupItemAudioClip;
     public AudioClip UseItemAudioClip;
 
-    private AudioSource myAudioSource;
+    protected AudioSource myAudioSource;
 
     public void Awake()
     {
@@ -18,5 +18,10 @@ public class Items : MonoBehaviour
     public void Start()
     {
         myAudioSource.PlayOneShot(PickupItemAudioClip);
+    }
+
+    public void PlayUseSound()
+    {
+        myAudioSource.PlayOneShot(UseItemAudioClip);
     }
 }

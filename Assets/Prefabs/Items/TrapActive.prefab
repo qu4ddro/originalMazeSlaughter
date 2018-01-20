@@ -77,7 +77,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: be70c26ed6a9afe408ad5b48eef39dff, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -159,6 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625a1c767e30d41428759b959ed0d83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PickupItemAudioClip: {fileID: 0}
+  UseItemAudioClip: {fileID: 0}
   trappedTime: 3
 --- !u!212 &212980420125890700
 SpriteRenderer:

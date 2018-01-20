@@ -7,19 +7,27 @@ public class SoundController : MonoBehaviour
 
     public AudioClip AmbientAudioClip;
 
+    public AudioClip StartAudioClip;
+
     public AudioClip[] RandomAudioClips;
 
-    public AudioSource AmbientAudioSource;
-    public AudioSource RandomClipsAudioSource;
-
+    private AudioSource myAudioSource;
 	// Use this for initialization
 	void Start ()
 	{
-	    AmbientAudioSource.clip = AmbientAudioClip;
-        AmbientAudioSource.Play();
+	    myAudioSource = this.GetComponent<AudioSource>();
+	    myAudioSource.clip = AmbientAudioClip;
+	    myAudioSource.Play();
+
+        Invoke("PlayDelayedAudio",2f);
 	}
-	
-	// Update is called once per frame
+
+    private void PlayDelayedAudio()
+    {
+        myAudioSource.PlayOneShot(StartAudioClip);
+    }
+
+    // Update is called once per frame
 	void Update () {
 		
 	}

@@ -151,7 +151,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9028ce3ac74c5fc4aaf3fcb668df6451, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 260c21f5fb992ae43b9ee43825ef049f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -595,12 +595,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4fe0dc8d301c2f44ae1a2815c711cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStartDelay: 2
+  levelStartDelay: 3
   LevelImage: {fileID: 1151903168}
   LevelImages:
-  - {fileID: 21300000, guid: 260c21f5fb992ae43b9ee43825ef049f, type: 3}
-  - {fileID: 21300000, guid: 260c21f5fb992ae43b9ee43825ef049f, type: 3}
-  - {fileID: 21300000, guid: 260c21f5fb992ae43b9ee43825ef049f, type: 3}
+  - {fileID: 21300000, guid: 487bb9fe1d4cb604194c3d3ac8c3fd9f, type: 3}
+  - {fileID: 21300000, guid: c621743792c32b346b787cc7fba5fcc4, type: 3}
+  - {fileID: 21300000, guid: f482c883ee215f54983bda696ffe959a, type: 3}
   DeathScreen: {fileID: 1241709054}
   WinScreen: {fileID: 403844817}
   level: 1
