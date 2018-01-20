@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class SyringeScript : MonoBehaviour
+public class Syringe : Items
 {
 
     public float SpeedBoostMultiplier = 2.0f;

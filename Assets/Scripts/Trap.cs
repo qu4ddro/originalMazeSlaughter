@@ -2,20 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapActive : MonoBehaviour
+public class Trap : Items
 {
     public float trappedTime = 3f;
     private MovingObject victim;
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     void OnTriggerEnter2D(Collider2D other)
     {

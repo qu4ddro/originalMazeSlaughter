@@ -9,6 +9,8 @@ public class BreakableWall : Wall {
 
     private SpriteRenderer spriteRenderer;
 
+    public AudioClip DestroyWallAudioClip;
+
     // Use this for initialization
     void Awake ()
     {
@@ -17,6 +19,7 @@ public class BreakableWall : Wall {
 
     public void DamageWall(int damage)
     {
+        //ToDo: exchange sprite to dmgsprite
         //SpriteRenderer.sprite = dmgSprite;
         health -= damage;
         if (health <= 0)

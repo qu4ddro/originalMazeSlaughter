@@ -1,32 +1,22 @@
-﻿namespace Assets.Scripts
+﻿using System.Collections;
+using System.Collections.Generic;
+using NUnit.Framework.Constraints;
+using UnityEngine;
+
+public class Items : MonoBehaviour
 {
-    public class Items
+    public AudioClip PickupItemAudioClip;
+    public AudioClip UseItemAudioClip;
+
+    private AudioSource myAudioSource;
+
+    public void Awake()
     {
-        
+        myAudioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
-    public class Axe : Items
+    public void Start()
     {
-        public int Health = 2;
-    }
-
-    public class Syringe : Items
-    {
-        
-    }
-
-    public class Torch : Items
-    {
-        
-    }
-
-    public class Key : Items
-    {
-        
-    }
-
-    public class Trap : Items
-    {
-        
+        myAudioSource.PlayOneShot(PickupItemAudioClip);
     }
 }

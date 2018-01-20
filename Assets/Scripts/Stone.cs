@@ -30,7 +30,7 @@ public class Stone : MovingObject {
 
     protected override void OnCantMove(GameObject hitted)
     {
-        if (hitted.gameObject.GetComponent<Wall>())
+        if (hitted.gameObject.GetComponent<BreakableWall>())
         {
             Destroy(hitted.gameObject);
             Destroy(this.gameObject);

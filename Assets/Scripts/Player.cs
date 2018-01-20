@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts;
 using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -14,6 +13,11 @@ public class Player : MovingObject
     public int InventorySize;
 
     public GameObject Trap;
+
+    protected override void Start()
+    {
+        base.Start();
+    }
 
     private void Update()
     {

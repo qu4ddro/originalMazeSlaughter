@@ -40,6 +40,10 @@ public abstract class MovingObject : MonoBehaviour
 
         defaultMoveTime = MoveTime;
 
+        // Set Animation and moving to zero
+        isMoving = false;
+        animator.speed = 0;
+
     }
 
     public float MoveTime

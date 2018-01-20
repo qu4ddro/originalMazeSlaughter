@@ -10,7 +10,7 @@ public class SoundController : MonoBehaviour
     public AudioClip[] RandomAudioClips;
 
     public AudioSource AmbientAudioSource;
-    public AudioSource RandomCLipsAudioSource;
+    public AudioSource RandomClipsAudioSource;
 
 	// Use this for initialization
 	void Start ()

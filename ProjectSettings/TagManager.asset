@@ -16,6 +16,7 @@ TagManager:
   - Water
   - Stone
   - TrapActive
+  - Light
   layers:
   - Default
   - TransparentFX
