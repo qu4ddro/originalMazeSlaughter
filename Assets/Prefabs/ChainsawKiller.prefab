@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 50999383945330986}
   - component: {fileID: 212506036302819316}
   - component: {fileID: 95687628029731160}
+  - component: {fileID: 82932548601934958}
   - component: {fileID: 114447268952336990}
   m_Layer: 0
-  m_Name: ChainsawKiller 2
+  m_Name: ChainsawKiller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626442502270528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5, y: -5.5, z: 0}
+  m_LocalPosition: {x: 47.5, y: -0.5, z: 0}
   m_LocalScale: {x: 0.7, y: 0.82, z: -0.84}
   m_Children: []
   m_Father: {fileID: 0}
@@ -89,6 +90,98 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.7}
   m_EdgeRadius: 0
+--- !u!82 &82932548601934958
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626442502270528}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 5
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.007461548
+      value: 0.99450684
+      inSlope: -0.04577085
+      outSlope: -0.04577085
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.29491663
+      value: 0.8197794
+      inSlope: -2.6683464
+      outSlope: -2.6683464
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.57429457
+      value: 0.12467903
+      inSlope: -0.6995589
+      outSlope: -0.6995589
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.98880386
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95687628029731160
 Animator:
   serializedVersion: 3
@@ -123,7 +216,10 @@ MonoBehaviour:
   isMoving: 0
   direction: 1
   moveTime: 350
-  RandomClips: []
+  MovingAudioClip: {fileID: 8300000, guid: f9cb73c27f84c42488d9ffb2881f9eaf, type: 3}
+  RandomClips:
+  - {fileID: 8300000, guid: 77bc854a33fa2b643b4d6f5bd8d1886a, type: 3}
+  - {fileID: 8300000, guid: f5d4dba2b05992c47a71bc76a4b21fdc, type: 3}
 --- !u!212 &212506036302819316
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -138,7 +234,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3916406682a3c3b47857020f58646807, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

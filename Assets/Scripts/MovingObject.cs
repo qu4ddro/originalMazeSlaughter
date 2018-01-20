@@ -19,11 +19,14 @@ public abstract class MovingObject : MonoBehaviour
     private float inverseMoveTime;          //Used to make movement more efficient.
     private Animator animator;
     public float moveTime = 100f;           //Time it will take object to move, in milliseconds.
+    protected AudioSource audioSource;
 
     protected int _horizontal = 0;
     protected int _vertical = 0;
 
     protected float defaultMoveTime;
+
+    public AudioClip MovingAudioClip;
 
     //Protected, virtual functions can be overridden by inheriting classes.
     protected virtual void Start()
@@ -38,12 +41,16 @@ public abstract class MovingObject : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = MovingAudioClip;
+        audioSource.Play();
+        audioSource.Pause();
+
         defaultMoveTime = MoveTime;
 
         // Set Animation and moving to zero
         isMoving = false;
         animator.speed = 0;
-
     }
 
     public float MoveTime
@@ -56,6 +63,18 @@ public abstract class MovingObject : MonoBehaviour
 
         }
     }
+
+    protected virtual void Update()
+    {
+        if (isMoving)
+        {
+            audioSource.UnPause();
+        }
+        else
+        {
+            audioSource.Pause();
+        }
+    } 
 
 
     public void SetDefaultSpeed()

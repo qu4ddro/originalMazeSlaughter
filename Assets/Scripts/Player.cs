@@ -12,21 +12,33 @@ public class Player : MovingObject
     public List<Items> Inventory = new List<Items>();
     public int InventorySize;
 
-    public GameObject Trap;
+    public GameObject TrapActive;
+
+    private SoundController SoundManager;
+
+    public float hitTimeOut = 1.0f;
+
+    private float lasthit;
+
+    public AudioClip NoExitAudioClip;
+    public AudioClip NoItemAudioClip;
 
     protected override void Start()
     {
         base.Start();
+        SoundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundController>();
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         int horizontal = 0; //Used to store the horizontal move direction.
         int vertical = 0; //Used to store the vertical move direction.
 
         // Get Inputs
-        horizontal = (int) (Input.GetAxisRaw("Horizontal"));
-        vertical = (int) (Input.GetAxisRaw("Vertical"));
+        horizontal = (int)(Input.GetAxisRaw("Horizontal"));
+        vertical = (int)(Input.GetAxisRaw("Vertical"));
 
         //Avoid diagonal Movement
         if (horizontal != 0)
@@ -39,16 +51,6 @@ public class Player : MovingObject
         {
             //Pass in horizontal and vertical as parameters to specify the direction to move Player in.
             AttemptMove(horizontal, vertical);
-        }
-
-        //Schritte-Sounds
-        if (isMoving)
-        {
-            GetComponent<AudioSource>().UnPause();
-        }
-        else
-        {
-            GetComponent<AudioSource>().Pause();
         }
 
         if (Input.GetKeyDown("1"))
@@ -67,7 +69,20 @@ public class Player : MovingObject
 
     protected override void OnCantMove(GameObject hitted)
     {
-        
+        //Debug.Log(hitted);
+        if (hitted.gameObject.CompareTag("Exit"))
+        {
+            if (Inventory.OfType<Key>().Any())
+            {
+                this.transform.Find("Key").GetComponent<Items>().PlayUseSound();
+                GameManager.instance.NextLevel();
+            }
+            else
+            {
+                Debug.Log("No Key! Can't Escape");
+                //audioSource.PlayOneShot(NoExitAudioClip);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -75,19 +90,6 @@ public class Player : MovingObject
         //Check if the tag of the trigger collided with is Exit.
         switch (other.tag)
         {
-            case "Exit":
-                if (Inventory.OfType<Key>().Any())
-                {
-                    this.transform.Find("Key").GetComponent<Items>().PlayUseSound();
-                    GameManager.instance.NextLevel();
-                }
-                else
-                {
-                    other.GetComponent<BoxCollider2D>().enabled = false;
-                    Debug.Log("No Key! Can't Escape");
-                    other.GetComponent<BoxCollider2D>().enabled = true;
-                }
-                break;
             case "Syringe":
                 transform.Find("Syringe").gameObject.SetActive(true);
                 Destroy(other.gameObject);
@@ -132,9 +134,10 @@ public class Player : MovingObject
         {
             var trap = Inventory.First(select => select.GetType() == typeof(Trap)) as Trap;
             Inventory.Remove(trap);
+            SoundManager.PlayOneShot(transform.Find("Trap").gameObject.GetComponent<Items>().UseItemAudioClip);
+            transform.Find("Trap").gameObject.GetComponent<Items>().PlayUseSound();
+            Instantiate<GameObject>(TrapActive, this.transform.position, Quaternion.identity);
             transform.Find("Trap").gameObject.SetActive(false);
-            Instantiate<GameObject>(Trap, this.transform.position, Quaternion.identity);
-
         }
     }
 
@@ -152,33 +155,35 @@ public class Player : MovingObject
     {
         if (Inventory.OfType<Axe>().Any())
         {
+            if (Time.time - lasthit < hitTimeOut)
+                return;
             var axe = Inventory.First(select => select.GetType() == typeof(Axe)) as Axe;
+            audioSource.PlayOneShot(axe.UseItemAudioClip);
             //ToDo: animation
             var hit = CastInCurrentDirection();
-            var hittedGameObject = hit.rigidbody.gameObject.GetComponent<BreakableWall>();
-            if (hittedGameObject.GetType() == typeof(BreakableWall))
+            if (!hit)
+                return;
+            BreakableWall hittedGameObject = hit.rigidbody.gameObject.GetComponent<BreakableWall>();
+            if (hittedGameObject != null)
             {
                 hittedGameObject.DamageWall(1);
-
-                if (axe != null)
+                axe.Health--;
+                lasthit = Time.time;
+                if (axe.Health > 0)
                 {
-                    axe.Health--;
-                    if (axe.Health >0)
-                    {
-                        Inventory.Add(axe);
-                    }
-                    else
-                    {
-                        Inventory.Remove(axe);
-                        transform.Find("Axe").gameObject.SetActive(false);
-                    }
                 }
+                else
+                {
+                    Inventory.Remove(axe);
+                    transform.Find("Axe").gameObject.SetActive(false);
+                }
+
             }
         }
     }
 
     public override void Die()
     {
-        GameManager.instance.GameOver();    
+        GameManager.instance.GameOver();
     }
 }

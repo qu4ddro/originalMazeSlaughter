@@ -6,7 +6,7 @@ using UnityEngine;
 public class Syringe : Items
 {
 
-    public float SpeedBoostMultiplier = 2.0f;
+    public float SpeedBoostMultiplier = 2f;
     public float SpeedBoostDuration = 5.0f;
 
     private GameObject Player;
@@ -15,7 +15,8 @@ public class Syringe : Items
     void OnEnable()
     {
         Player = GameObject.FindWithTag("Player");
-        Player.GetComponent<Player>().MoveTime = Player.GetComponent<Player>().MoveTime / SpeedBoostMultiplier;
+        Debug.Log("Boost!"+Player);
+        Player.GetComponent<Player>().MoveTime /= SpeedBoostMultiplier;
         StartCoroutine(DeactivateAfterDuration());
     }
 
@@ -23,8 +24,9 @@ public class Syringe : Items
     {
         // Wait for an amount of Time before resetting
         yield return new WaitForSeconds(SpeedBoostDuration);
+        Debug.Log("No Boost");
         //Reset MoveTime to standard MoveTime
-        Player.GetComponent<Player>().MoveTime = Player.GetComponent<Player>().MoveTime * SpeedBoostMultiplier;
+        Player.GetComponent<Player>().MoveTime *= SpeedBoostMultiplier;
         //Disable this Object so it is hidden
         this.gameObject.SetActive(false);
     }

@@ -9,48 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1350491762644706}
+  m_RootGameObject: {fileID: 1540356649457034}
   m_IsPrefabParent: 1
---- !u!1 &1350491762644706
+--- !u!1 &1540356649457034
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4001241966632170}
-  - component: {fileID: 82617024096026878}
-  - component: {fileID: 114175748238519696}
+  - component: {fileID: 4282887320256084}
+  - component: {fileID: 82812178760921194}
   m_Layer: 0
-  m_Name: SoundManager
-  m_TagString: SoundManager
+  m_Name: BreakableWallLvl3Explosion
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4001241966632170
+--- !u!4 &4282887320256084
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1350491762644706}
+  m_GameObject: {fileID: 1540356649457034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 78, y: 8.36, z: 0.12633243}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82617024096026878
+--- !u!82 &82812178760921194
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1350491762644706}
+  m_GameObject: {fileID: 1540356649457034}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 38e9dd919f8ac1f438b825458228d958, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -59,11 +58,11 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 15
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -90,7 +89,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -121,20 +120,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114175748238519696
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1350491762644706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1bdce52b8f1fb04488d233aeaf48936, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AmbientAudioClip: {fileID: 8300000, guid: a5ccecb46f090864195a5d6eb2ddb86b, type: 3}
-  StartAudioClip: {fileID: 8300000, guid: 3aa2ca432d41143489c42e167ff07ca1, type: 3}
-  RandomAudioClips:
-  - {fileID: 0}
-  - {fileID: 0}
-  WinAudioClip: {fileID: 8300000, guid: a1d1905ef31bdce4c87288545cbd29ce, type: 3}

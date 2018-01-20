@@ -12,37 +12,42 @@ public class SoundController : MonoBehaviour
     public AudioClip WinAudioClip;
 
     private AudioSource myAudioSource;
-	// Use this for initialization
-	void Start ()
-	{
-	    myAudioSource = this.GetComponent<AudioSource>();
-	    myAudioSource.clip = AmbientAudioClip;
-	    myAudioSource.volume = 0;
-	    myAudioSource.Play();
-	    StartCoroutine(FadeSound(1, 3f));
+    // Use this for initialization
+    void Start()
+    {
+        myAudioSource = this.GetComponent<AudioSource>();
+        myAudioSource.clip = AmbientAudioClip;
+        myAudioSource.volume = 0;
+        myAudioSource.Play();
+        StartCoroutine(FadeSound(1, 3f));
 
-        Invoke("PlayDelayedAudio",2f);
-	}
+        Invoke("PlayDelayerStartClip", 2f);
+    }
 
     public IEnumerator FadeSound(float _newVolume, float FadeDuration)
     {
-        Debug.Log("I am fading to "+_newVolume);
         float currentVolume = myAudioSource.volume;
         float startTime = Time.time;
         float elapsedTime = 0;
+        float remaining = _newVolume - currentVolume;
 
-        while (myAudioSource.volume < _newVolume)
+        while (Mathf.Abs(remaining) > float.Epsilon)
         {
-            myAudioSource.volume = Mathf.Lerp(currentVolume, _newVolume, elapsedTime/FadeDuration);
+            myAudioSource.volume = Mathf.Lerp(currentVolume, _newVolume, elapsedTime / FadeDuration);
             elapsedTime = Time.time - startTime;
+            remaining = _newVolume - myAudioSource.volume;
             yield return null;
         }
-        Debug.Log("Fade finished");
     }
 
-public void PlayDelayedAudio()
+    public void PlayDelayerStartClip()
     {
         myAudioSource.PlayOneShot(StartAudioClip);
+    }
+
+    public void PlayOneShot(AudioClip _clipToPlay)
+    {
+        myAudioSource.PlayOneShot(_clipToPlay);
     }
 
     public void PlayWinAudioClip()

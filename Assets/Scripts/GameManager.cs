@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+
+    public int level = 1;
+
     public float levelStartDelay = 2f;                      //Time to wait before starting level, in seconds.
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 
@@ -15,7 +18,6 @@ public class GameManager : MonoBehaviour
     public GameObject DeathScreen;
     public GameObject WinScreen;
 
-    public int level = 1;
     public Object[] scenesToLoad;
     public GameObject player;
     public bool PlayerIsAlive = true;
@@ -23,6 +25,10 @@ public class GameManager : MonoBehaviour
     public bool doingSetup;
 
     private SoundController soundManager;
+    private AudioSource audioSource;
+
+    public AudioClip WinAudioClip;
+    public AudioClip LooseAudioClip;
 
     //Awake is always called before any Start functions
     void Awake()
@@ -40,6 +46,8 @@ public class GameManager : MonoBehaviour
         
         //Call the InitGame function to initialize the first level 
         InitGame();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void InitGame()
@@ -50,11 +58,11 @@ public class GameManager : MonoBehaviour
     
     public void NextLevel()
     {
-        StartCoroutine(soundManager.FadeSound(0, .1f));
+        audioSource.PlayOneShot(WinAudioClip);
+        StartCoroutine(soundManager.FadeSound(0, 1f));
         this.WinScreen.SetActive(true);
         doingSetup = true;
         level++;
-        soundManager.PlayWinAudioClip();
         if (scenesToLoad[level - 1])
         {
             Invoke("LoadNewScene", 3);

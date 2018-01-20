@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -576,6 +576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1403556914}
   - component: {fileID: 1403556913}
+  - component: {fileID: 1403556915}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -595,7 +596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4fe0dc8d301c2f44ae1a2815c711cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStartDelay: 5
+  level: 1
+  levelStartDelay: 1
   LevelImage: {fileID: 1151903168}
   LevelImages:
   - {fileID: 21300000, guid: 487bb9fe1d4cb604194c3d3ac8c3fd9f, type: 3}
@@ -603,7 +605,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f482c883ee215f54983bda696ffe959a, type: 3}
   DeathScreen: {fileID: 1241709054}
   WinScreen: {fileID: 403844817}
-  level: 1
   scenesToLoad:
   - {fileID: 102900000, guid: f7179f2f183c77546a76ed83313d2891, type: 3}
   - {fileID: 102900000, guid: 2ec1fa08b39975440bb5fbe906d2ce55, type: 3}
@@ -611,6 +612,8 @@ MonoBehaviour:
   player: {fileID: 1847538911328894, guid: ea65b9d5dbb7757449f8eca0e602e778, type: 2}
   PlayerIsAlive: 1
   doingSetup: 0
+  WinAudioClip: {fileID: 8300000, guid: a1d1905ef31bdce4c87288545cbd29ce, type: 3}
+  LooseAudioClip: {fileID: 0}
 --- !u!224 &1403556914
 RectTransform:
   m_ObjectHideFlags: 0
@@ -630,3 +633,83 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &1403556915
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1403556912}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0

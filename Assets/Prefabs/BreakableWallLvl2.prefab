@@ -101,7 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmgSprite: {fileID: 21300000, guid: 6c703d994cd5cb54aac1cdb8f391404d, type: 3}
   health: 2
-  DestroyWallAudioClip: {fileID: 0}
+  DestroyGameObject: {fileID: 1540356649457034, guid: a7a4a6c677448284b81c5a58351fde8d,
+    type: 2}
 --- !u!212 &212047538881624240
 SpriteRenderer:
   m_ObjectHideFlags: 1

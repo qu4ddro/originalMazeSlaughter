@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Items : MonoBehaviour
 {
-    public AudioClip PickupItemAudioClip;
+    public AudioClip StartItemAudioClip;
     public AudioClip UseItemAudioClip;
 
     protected AudioSource myAudioSource;
@@ -17,7 +17,7 @@ public class Items : MonoBehaviour
 
     public void Start()
     {
-        myAudioSource.PlayOneShot(PickupItemAudioClip);
+        myAudioSource.PlayOneShot(StartItemAudioClip);
     }
 
     public void PlayUseSound()

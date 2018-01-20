@@ -37,10 +37,11 @@ GameObject:
   - component: {fileID: 4981594955952020}
   - component: {fileID: 212417417323609180}
   - component: {fileID: 50687983091169952}
+  - component: {fileID: 82592532199266666}
   - component: {fileID: 114018443067475876}
   - component: {fileID: 61078541224203588}
   m_Layer: 8
-  m_Name: Switch
+  m_Name: SwitchLvl3
   m_TagString: Switch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,6 +119,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!82 &82592532199266666
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1312374819229330}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 10
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114018443067475876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,6 +222,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  SwitchActiveSprite: {fileID: 21300000, guid: e924993834bc3a54facb8ff112154791, type: 3}
+  SwitchInactiveSprite: {fileID: 21300000, guid: 3e452850b4bfa224c937a96ff96e5048,
+    type: 3}
+  SwitchActivateAudioClip: {fileID: 8300000, guid: 9583c2fd352b84b4eb1cf23c02dbd3fa,
+    type: 3}
 --- !u!212 &212417417323609180
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -219,7 +305,7 @@ SpriteRenderer:
   m_SortingLayerID: -2058355237
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c621743792c32b346b787cc7fba5fcc4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f482c883ee215f54983bda696ffe959a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

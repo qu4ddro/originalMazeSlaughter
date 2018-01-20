@@ -38,7 +38,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4495952737614598}
   - component: {fileID: 212994771001990436}
-  - component: {fileID: 114318442575217116}
   - component: {fileID: 82489709935697154}
   - component: {fileID: 114104074916462730}
   m_Layer: 0
@@ -156,7 +155,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1847538911328894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.5, y: -0.43, z: 0}
+  m_LocalPosition: {x: 78.5, y: -5.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4586096218025230}
@@ -260,11 +259,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 53f6a1ce62812ec489794c216ba7a4a3, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -420,7 +419,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 218fc70e2db698e4d99a4a52b4024316, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -759,7 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab3a9171a7e09f4284cc2d7dfd3d09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupItemAudioClip: {fileID: 8300000, guid: 290fc188864cbdd4a8dc359b32cd4b2c, type: 3}
+  StartItemAudioClip: {fileID: 8300000, guid: 290fc188864cbdd4a8dc359b32cd4b2c, type: 3}
   UseItemAudioClip: {fileID: 8300000, guid: e62dae09fdfb8244590e3a77a4cb7287, type: 3}
   Health: 2
 --- !u!114 &114104074916462730
@@ -773,9 +772,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae993852d30afd645a808d329320774d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupItemAudioClip: {fileID: 8300000, guid: 290fc188864cbdd4a8dc359b32cd4b2c, type: 3}
+  StartItemAudioClip: {fileID: 8300000, guid: 2f9f4788635fd2643854d0c41cfe742f, type: 3}
   UseItemAudioClip: {fileID: 8300000, guid: 2f9f4788635fd2643854d0c41cfe742f, type: 3}
-  SpeedBoostMultiplier: 2
+  SpeedBoostMultiplier: 1.5
   SpeedBoostDuration: 5
 --- !u!114 &114150078055574550
 MonoBehaviour:
@@ -788,26 +787,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8ec807f7faca54ab09ebe4baba6f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupItemAudioClip: {fileID: 0}
-  UseItemAudioClip: {fileID: 0}
-  TorchMultiplier: 5
+  StartItemAudioClip: {fileID: 8300000, guid: 218fc70e2db698e4d99a4a52b4024316, type: 3}
+  UseItemAudioClip: {fileID: 8300000, guid: 218fc70e2db698e4d99a4a52b4024316, type: 3}
+  TorchMultiplier: 2
   TorchDuration: 5
-  FadeDuration: 0.5
---- !u!114 &114318442575217116
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1206616524512906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae993852d30afd645a808d329320774d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PickupItemAudioClip: {fileID: 0}
-  UseItemAudioClip: {fileID: 0}
-  SpeedBoostMultiplier: 2
-  SpeedBoostDuration: 5
+  FadeDuration: 2
 --- !u!114 &114426469111377362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -825,9 +809,13 @@ MonoBehaviour:
   isMoving: 0
   direction: 2
   moveTime: 100
+  MovingAudioClip: {fileID: 8300000, guid: 53f6a1ce62812ec489794c216ba7a4a3, type: 3}
   Inventory: []
   InventorySize: 3
-  Trap: {fileID: 1911409765715044, guid: 645499be1615dd242b2c4ab616e104b0, type: 2}
+  TrapActive: {fileID: 1911409765715044, guid: 645499be1615dd242b2c4ab616e104b0, type: 2}
+  hitTimeOut: 1
+  NoExitAudioClip: {fileID: 8300000, guid: 6ab0d91ce44b350478c6e2a7f8e6efca, type: 3}
+  NoItemAudioClip: {fileID: 8300000, guid: 2e725b56dd28f5049a34bf339aee0b28, type: 3}
 --- !u!114 &114743105550209122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -839,7 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9f26a01db66eb47b8345215224a9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupItemAudioClip: {fileID: 8300000, guid: 549cb0dd0eafc9e45934b431a1fd67ef, type: 3}
+  StartItemAudioClip: {fileID: 8300000, guid: 549cb0dd0eafc9e45934b431a1fd67ef, type: 3}
   UseItemAudioClip: {fileID: 8300000, guid: a372bcd1291b3f5468e4524b2987905b, type: 3}
 --- !u!114 &114878100776696738
 MonoBehaviour:
@@ -852,9 +840,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625a1c767e30d41428759b959ed0d83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupItemAudioClip: {fileID: 0}
-  UseItemAudioClip: {fileID: 0}
-  trappedTime: 3
+  StartItemAudioClip: {fileID: 8300000, guid: 290fc188864cbdd4a8dc359b32cd4b2c, type: 3}
+  UseItemAudioClip: {fileID: 8300000, guid: 50fbf86fc6c6e8648b0bc6a9a91dd448, type: 3}
 --- !u!212 &212125414046770020
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1081,7 +1068,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1206616524512906}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

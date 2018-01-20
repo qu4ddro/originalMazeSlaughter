@@ -9,7 +9,7 @@ public class BreakableWall : Wall {
 
     private SpriteRenderer spriteRenderer;
 
-    public AudioClip DestroyWallAudioClip;
+    public GameObject DestroyGameObject;
 
     // Use this for initialization
     void Awake ()
@@ -24,6 +24,7 @@ public class BreakableWall : Wall {
         health -= damage;
         if (health <= 0)
         {
+            Instantiate(DestroyGameObject, this.transform.position, this.transform.rotation);
             gameObject.SetActive(false);
         }
     }

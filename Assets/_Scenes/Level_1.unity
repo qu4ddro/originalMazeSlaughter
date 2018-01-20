@@ -230,7 +230,12 @@ Prefab:
     - target: {fileID: 82617024096026878, guid: 400d1e25d0c5fa946ac7b26b3a442f52,
         type: 2}
       propertyPath: m_Volume
-      value: 1
+      value: 0.776
+      objectReference: {fileID: 0}
+    - target: {fileID: 82617024096026878, guid: 400d1e25d0c5fa946ac7b26b3a442f52,
+        type: 2}
+      propertyPath: Priority
+      value: 205
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 400d1e25d0c5fa946ac7b26b3a442f52, type: 2}
@@ -321,35 +326,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 82492722312418520, guid: ea65b9d5dbb7757449f8eca0e602e778,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1847538911328894, guid: ea65b9d5dbb7757449f8eca0e602e778, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114150078055574550, guid: ea65b9d5dbb7757449f8eca0e602e778,
-        type: 2}
-      propertyPath: PickupItemAudioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 290fc188864cbdd4a8dc359b32cd4b2c, type: 3}
-    - target: {fileID: 114150078055574550, guid: ea65b9d5dbb7757449f8eca0e602e778,
-        type: 2}
-      propertyPath: UseItemAudioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 218fc70e2db698e4d99a4a52b4024316, type: 3}
-    - target: {fileID: 114878100776696738, guid: ea65b9d5dbb7757449f8eca0e602e778,
-        type: 2}
-      propertyPath: UseItemAudioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 50fbf86fc6c6e8648b0bc6a9a91dd448, type: 3}
-    - target: {fileID: 114878100776696738, guid: ea65b9d5dbb7757449f8eca0e602e778,
-        type: 2}
-      propertyPath: PickupItemAudioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 290fc188864cbdd4a8dc359b32cd4b2c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea65b9d5dbb7757449f8eca0e602e778, type: 2}
   m_IsPrefabParent: 0

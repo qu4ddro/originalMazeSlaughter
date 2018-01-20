@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212980420125890700}
   - component: {fileID: 61881191726928452}
   - component: {fileID: 82020225764014290}
-  - component: {fileID: 114732577554914488}
+  - component: {fileID: 114887375472360838}
   m_Layer: 9
   m_Name: TrapActive
   m_TagString: TrapActive
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911409765715044}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.5, y: -2.5, z: 0}
+  m_LocalPosition: {x: 27.5, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,12 +85,12 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 67
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 18.15
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -117,7 +117,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -135,7 +135,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -148,7 +148,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114732577554914488
+--- !u!114 &114887375472360838
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -156,12 +156,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1911409765715044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 625a1c767e30d41428759b959ed0d83a, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ff54b00ac0e8840b8bc50c44c57fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupItemAudioClip: {fileID: 0}
-  UseItemAudioClip: {fileID: 0}
   trappedTime: 3
+  TrapCatchedAudioClip: {fileID: 8300000, guid: c666cb20990bedd46a01c58ee7e8888a,
+    type: 3}
 --- !u!212 &212980420125890700
 SpriteRenderer:
   m_ObjectHideFlags: 1

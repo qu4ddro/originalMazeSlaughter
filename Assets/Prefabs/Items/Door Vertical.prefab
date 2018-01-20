@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4652631906318928}
   - component: {fileID: 212893151146397882}
   - component: {fileID: 61914922105036432}
-  m_Layer: 9
-  m_Name: Door 1
+  m_Layer: 8
+  m_Name: Door Vertical
   m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0546875, y: 1.3183594}
+    oldSize: {x: 1.0546875, y: 1.0546875}
     newSize: {x: 5.4, y: 5.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
