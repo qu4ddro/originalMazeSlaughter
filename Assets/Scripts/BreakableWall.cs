@@ -20,7 +20,7 @@ public class BreakableWall : Wall {
     public void DamageWall(int damage)
     {
         //ToDo: exchange sprite to dmgsprite
-        //SpriteRenderer.sprite = dmgSprite;
+        spriteRenderer.sprite = dmgSprite;
         health -= damage;
         if (health <= 0)
         {

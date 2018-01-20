@@ -28,16 +28,16 @@ public class SoundController : MonoBehaviour
     {
         Debug.Log("I am fading to "+_newVolume);
         float currentVolume = myAudioSource.volume;
-        float remaining = _newVolume - currentVolume;
         float startTime = Time.time;
         float elapsedTime = 0;
 
-        while (Mathf.Abs(remaining) > float.Epsilon)
+        while (myAudioSource.volume < _newVolume)
         {
             myAudioSource.volume = Mathf.Lerp(currentVolume, _newVolume, elapsedTime/FadeDuration);
             elapsedTime = Time.time - startTime;
             yield return null;
         }
+        Debug.Log("Fade finished");
     }
 
 public void PlayDelayedAudio()
