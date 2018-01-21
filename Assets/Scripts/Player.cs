@@ -132,8 +132,8 @@ public class Player : MovingObject
     {
         if (Inventory.OfType<Trap>().Any())
         {
-            var trap = Inventory.First(select => select.GetType() == typeof(Trap)) as Trap;
-            Inventory.Remove(trap);
+            var ind = Inventory.FindIndex(sel => sel.GetType() == typeof(Trap));
+            Inventory.RemoveAt(ind);
             SoundManager.PlayOneShot(transform.Find("Trap").gameObject.GetComponent<Items>().UseItemAudioClip);
             transform.Find("Trap").gameObject.GetComponent<Items>().PlayUseSound();
             Instantiate<GameObject>(TrapActive, this.transform.position, Quaternion.identity);
@@ -174,7 +174,10 @@ public class Player : MovingObject
                 }
                 else
                 {
-                    Inventory.Remove(axe);
+                    var ind = Inventory.FindIndex(sel => sel.GetType() == typeof(Axe));
+                    Inventory.RemoveAt(ind);
+         
+                    //Inventory.Remove(axe);
                     transform.Find("Axe").gameObject.SetActive(false);
                 }
 
