@@ -33,17 +33,13 @@ public class Stone : MovingObject {
     {
         if (hitted.gameObject.GetComponent<BreakableWall>())
         {
-            Destroy(hitted.gameObject);
-            Destroy(this.gameObject);
+            BreakableWall wall = hitted.gameObject.GetComponent<BreakableWall>();
+            wall.DamageWall(100);
+            this.gameObject.SetActive(false);
         }
         else if (hitted.gameObject.GetComponent<MovingObject>())
         {
             hitted.gameObject.GetComponent<MovingObject>().Die();
         }
-    }
-
-    private void OnDestroy()
-    {
-
     }
 }

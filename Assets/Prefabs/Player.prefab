@@ -270,7 +270,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -808,7 +808,7 @@ MonoBehaviour:
     m_Bits: 256
   isMoving: 0
   direction: 2
-  moveTime: 100
+  moveTime: 200
   MovingAudioClip: {fileID: 8300000, guid: 53f6a1ce62812ec489794c216ba7a4a3, type: 3}
   Inventory: []
   InventorySize: 3
