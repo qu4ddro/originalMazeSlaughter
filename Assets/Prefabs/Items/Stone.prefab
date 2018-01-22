@@ -110,7 +110,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -139,7 +139,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.9
+      value: 0.905
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -203,8 +203,8 @@ MonoBehaviour:
     m_Bits: 256
   isMoving: 0
   direction: 0
-  moveTime: 100
-  MovingAudioClip: {fileID: 0}
+  moveTime: 200
+  MovingAudioClip: {fileID: 8300000, guid: 8b3c332c4f2bca54daa427ba00a8eda7, type: 3}
 --- !u!212 &212731483530448302
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -19,13 +19,12 @@ public class BreakableWall : Wall {
 
     public void DamageWall(int damage)
     {
-        //ToDo: exchange sprite to dmgsprite
         spriteRenderer.sprite = dmgSprite;
         health -= damage;
         if (health <= 0)
         {
             Instantiate(DestroyGameObject, this.transform.position, this.transform.rotation);
-            gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
     }
 }
