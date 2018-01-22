@@ -11,47 +11,49 @@ public class SoundController : MonoBehaviour
 
     public AudioClip WinAudioClip;
 
-    private AudioSource myAudioSource;
+    public float StartVolumeAmbientSound = 0.65f;
+
+    private AudioSource audioSource;
     // Use this for initialization
     void Start()
     {
-        myAudioSource = this.GetComponent<AudioSource>();
-        myAudioSource.clip = AmbientAudioClip;
-        myAudioSource.volume = 0;
-        myAudioSource.Play();
-        StartCoroutine(FadeSound(1, 3f));
+        audioSource = this.GetComponent<AudioSource>();
+        audioSource.clip = AmbientAudioClip;
+        audioSource.volume = 0;
+        audioSource.Play();
+        StartCoroutine(FadeSound(StartVolumeAmbientSound, 3f));
 
         //Invoke("PlayDelayerStartClip", 2f);
     }
 
     public IEnumerator FadeSound(float _newVolume, float FadeDuration)
     {
-        float currentVolume = myAudioSource.volume;
+        float currentVolume = audioSource.volume;
         float startTime = Time.time;
         float elapsedTime = 0;
         float remaining = _newVolume - currentVolume;
 
         while (Mathf.Abs(remaining) > float.Epsilon)
         {
-            myAudioSource.volume = Mathf.Lerp(currentVolume, _newVolume, elapsedTime / FadeDuration);
+            audioSource.volume = Mathf.Lerp(currentVolume, _newVolume, elapsedTime / FadeDuration);
             elapsedTime = Time.time - startTime;
-            remaining = _newVolume - myAudioSource.volume;
+            remaining = _newVolume - audioSource.volume;
             yield return null;
         }
     }
 
     public void PlayDelayerStartClip()
     {
-        myAudioSource.PlayOneShot(StartAudioClip);
+        audioSource.PlayOneShot(StartAudioClip);
     }
 
     public void PlayOneShot(AudioClip _clipToPlay)
     {
-        myAudioSource.PlayOneShot(_clipToPlay);
+        audioSource.PlayOneShot(_clipToPlay);
     }
 
     public void PlayWinAudioClip()
     {
-        myAudioSource.PlayOneShot(WinAudioClip);
+        audioSource.PlayOneShot(WinAudioClip);
     }
 }

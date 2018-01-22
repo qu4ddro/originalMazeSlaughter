@@ -112,8 +112,9 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FadeLight(float _newVolume, float FadeDuration)
     {
-        Light light = lightObject.gameObject.GetComponent<Light>();
-        float lightRange = light.range;
+        GameObject mask = GameObject.FindGameObjectWithTag("Mask");
+        //Light light = lightObject.gameObject.GetComponent<Light>();
+        float lightRange = mask.transform.localScale.x;
 
         float startTime = Time.time;
         float elapsedTime = 0;
@@ -121,9 +122,10 @@ public class GameManager : MonoBehaviour
 
         while (Mathf.Abs(remaining) > float.Epsilon)
         {
-            light.range = Mathf.Lerp(lightRange, _newVolume, elapsedTime / FadeDuration);
+            float newscale = Mathf.Lerp(lightRange, _newVolume, elapsedTime / FadeDuration);
+            mask.transform.localScale = new Vector3(newscale, newscale, newscale);
             elapsedTime = Time.time - startTime;
-            remaining = _newVolume - light.range;
+            remaining = _newVolume - mask.transform.localScale.x;
             yield return null;
         }
         Background.SetActive(true);
