@@ -15,7 +15,6 @@ public class Syringe : Items
     void OnEnable()
     {
         Player = GameObject.FindWithTag("Player");
-        Debug.Log("Boost!"+Player);
         Player.GetComponent<Player>().MoveTime /= SpeedBoostMultiplier;
         StartCoroutine(DeactivateAfterDuration());
     }
@@ -24,7 +23,6 @@ public class Syringe : Items
     {
         // Wait for an amount of Time before resetting
         yield return new WaitForSeconds(SpeedBoostDuration);
-        Debug.Log("No Boost");
         //Reset MoveTime to standard MoveTime
         Player.GetComponent<Player>().MoveTime *= SpeedBoostMultiplier;
         //Disable this Object so it is hidden

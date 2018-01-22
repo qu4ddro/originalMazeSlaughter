@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Sprite[] LevelImages;
     public GameObject DeathScreen;
     public GameObject WinScreen;
+    public GameObject Background;
 
     public Object[] scenesToLoad;
     public GameObject player;
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
         doingSetup = true;
         StartCoroutine("LoadNewScene");
     }
+
     
     public void NextLevel()
     {
@@ -76,14 +78,24 @@ public class GameManager : MonoBehaviour
 
     private void GameWon()
     {
-        WinScreen.SetActive(true);
+        Background.SetActive(true);
         doingSetup = true;
+    }
+
+    public IEnumerator ShowScreen(GameObject screenToShow, int delayTime, int fadeTime)
+    {
+        float startTime = Time.time;
+        while (startTime - Time.time < delayTime)
+        {
+            yield return null;
+        }
+        screenToShow.SetActive(true);
     }
 
     public void GameOver()
     {
         PlayerIsAlive = false;
-        DeathScreen.SetActive(true);
+        Background.SetActive(true);
     }
 
     private void LoadNewScene()
