@@ -222,6 +222,10 @@ public abstract class MovingObject : MonoBehaviour
 
             //Recalculate the remaining distance after moving.
             sqrRemainingDistance = (transform.position - end).sqrMagnitude;
+            Debug.Log(sqrRemainingDistance);
+            Debug.Log((transform.position - end));
+            Debug.Log(rb2D.position+"<-position     end->"+end);
+            Debug.Log(newPostion);
 
             //Return and loop until sqrRemainingDistance is close enough to zero to end the function
             yield return null;
