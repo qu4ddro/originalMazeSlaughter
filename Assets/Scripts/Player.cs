@@ -20,9 +20,6 @@ public class Player : MovingObject
 
     private float lasthit;
 
-    public AudioClip NoExitAudioClip;
-    public AudioClip NoItemAudioClip;
-
     protected override void Start()
     {
         base.Start();
@@ -79,8 +76,8 @@ public class Player : MovingObject
             }
             else
             {
-                Debug.Log("No Key! Can't Escape");
-                //audioSource.PlayOneShot(NoExitAudioClip);
+                //Debug.Log("No Key! Can't Escape");
+                GameManager.instance.PlayExitErrorSound();
             }
         }
     }
@@ -126,6 +123,10 @@ public class Player : MovingObject
                     Inventory.Add(new Trap());
                     break;
             }
+        }
+        else
+        {
+            GameManager.instance.PlayItemErrorSound();
         }
     }
     private void UseTrap()

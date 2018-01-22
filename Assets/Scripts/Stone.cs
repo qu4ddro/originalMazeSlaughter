@@ -41,5 +41,9 @@ public class Stone : MovingObject {
         {
             hitted.gameObject.GetComponent<MovingObject>().Die();
         }
+        else if (hitted.gameObject.GetComponent<Wall>())
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 }

@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     public AudioClip WinAudioClip;
     public AudioClip LooseAudioClip;
 
+    public AudioClip NoMoreItemsAudioClip;
+    public AudioClip NoExitAudioClip;
+
     //Awake is always called before any Start functions
     void Awake()
     {
@@ -97,26 +100,31 @@ public class GameManager : MonoBehaviour
     {
         PlayerIsAlive = false;
         doingSetup = true;
-        //StartCoroutine(FadeLight());
+        StartCoroutine(FadeLight(0,.5f));
         audioSource.PlayOneShot(LooseAudioClip);
+        StartCoroutine(soundManager.FadeSound(0, 1f));
+    }
+
+
+    public IEnumerator FadeLight(float _newVolume, float FadeDuration)
+    {
+        Light light = lightObject.gameObject.GetComponent<Light>();
+        float lightRange = light.range;
+
+        float startTime = Time.time;
+        float elapsedTime = 0;
+        float remaining = _newVolume - lightRange;
+
+        while (Mathf.Abs(remaining) > float.Epsilon)
+        {
+            light.range = Mathf.Lerp(lightRange, _newVolume, elapsedTime / FadeDuration);
+            elapsedTime = Time.time - startTime;
+            remaining = _newVolume - light.range;
+            yield return null;
+        }
         Background.SetActive(true);
     }
 
-    /*
-    IEnumerator FadeLight()
-    {
-        float startTime = Time.time;
-        Light light = lightObject.gameObject.GetComponent<Light>();
-        float lightRange = light.range;
-        while (lightRange > Mathf.Epsilon)
-        {
-            Debug.Log(lightRange);
-            lightRange = Mathf.Lerp(lightRange, 0, 1/startTime-Time.time);
-            light.range = lightRange;
-        }
-        yield return null;
-    }
-    */
     private void LoadNewScene()
     {
         Object scene = scenesToLoad[level - 1];
@@ -156,5 +164,15 @@ public class GameManager : MonoBehaviour
     {
         doingSetup = false;
         LevelImage.SetActive(false);
+    }
+
+    public void PlayItemErrorSound()
+    {
+        audioSource.PlayOneShot(NoMoreItemsAudioClip);
+    }
+
+    public void PlayExitErrorSound()
+    {
+        audioSource.PlayOneShot(NoExitAudioClip);
     }
 }
