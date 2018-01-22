@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework.Constraints;
-using UnityEditor;
 using UnityEngine;
 
 public class Torch : Items

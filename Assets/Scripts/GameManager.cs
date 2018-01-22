@@ -1,8 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-
-using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -19,7 +18,8 @@ public class GameManager : MonoBehaviour
     public GameObject WinScreen;
     public GameObject Background;
 
-    public Object[] scenesToLoad;
+    public string[] scenesToLoad = new string[3];
+
     private GameObject player;
     private GameObject lightObject;
 
@@ -49,7 +49,11 @@ public class GameManager : MonoBehaviour
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
-        
+
+        scenesToLoad[0] = "Level_1";
+        scenesToLoad[1] = "Level_2";
+        scenesToLoad[2] = "Level_3";
+
         //Call the InitGame function to initialize the first level 
         InitGame();
 
@@ -69,11 +73,11 @@ public class GameManager : MonoBehaviour
         this.WinScreen.SetActive(true);
         doingSetup = true;
         level++;
-        if (scenesToLoad[level - 1])
+        if (scenesToLoad[level - 1] != null)
         {
             Invoke("LoadNewScene", 3);
         }
-        else if (scenesToLoad[level - 1])
+        else if (scenesToLoad[level - 1] !=null)
         {
             doingSetup = true;
             GameWon();
@@ -128,13 +132,12 @@ public class GameManager : MonoBehaviour
 
     private void LoadNewScene()
     {
-        Object scene = scenesToLoad[level - 1];
+        var scene = scenesToLoad[level - 1];
         WinScreen.SetActive(false);
         LevelImage.GetComponent<Image>().sprite = LevelImages[level-1];
         LevelImage.SetActive(true);
-
         // Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
-        SceneManager.LoadSceneAsync(scene.name);
+        SceneManager.LoadSceneAsync(scene);
 
         /*
         // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
