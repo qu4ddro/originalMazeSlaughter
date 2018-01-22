@@ -222,6 +222,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Timer: 0
   SwitchActiveSprite: {fileID: 21300000, guid: e924993834bc3a54facb8ff112154791, type: 3}
   SwitchInactiveSprite: {fileID: 21300000, guid: 3e452850b4bfa224c937a96ff96e5048,
     type: 3}
@@ -241,7 +242,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3916406682a3c3b47857020f58646807, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -285,7 +286,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3916406682a3c3b47857020f58646807, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

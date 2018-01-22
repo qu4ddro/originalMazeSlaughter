@@ -76,7 +76,6 @@ public class Player : MovingObject
             }
             else
             {
-                //Debug.Log("No Key! Can't Escape");
                 GameManager.instance.PlayExitErrorSound();
             }
         }

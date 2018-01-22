@@ -789,7 +789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartItemAudioClip: {fileID: 8300000, guid: 218fc70e2db698e4d99a4a52b4024316, type: 3}
   UseItemAudioClip: {fileID: 8300000, guid: 218fc70e2db698e4d99a4a52b4024316, type: 3}
-  TorchMultiplier: 2
+  TorchMultiplier: 1.5
   TorchDuration: 5
   FadeDuration: 2
 --- !u!114 &114426469111377362
@@ -814,8 +814,6 @@ MonoBehaviour:
   InventorySize: 3
   TrapActive: {fileID: 1911409765715044, guid: 645499be1615dd242b2c4ab616e104b0, type: 2}
   hitTimeOut: 1
-  NoExitAudioClip: {fileID: 8300000, guid: 6ab0d91ce44b350478c6e2a7f8e6efca, type: 3}
-  NoItemAudioClip: {fileID: 8300000, guid: 2e725b56dd28f5049a34bf339aee0b28, type: 3}
 --- !u!114 &114743105550209122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -988,7 +986,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3916406682a3c3b47857020f58646807, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

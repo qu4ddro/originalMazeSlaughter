@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         Background.SetActive(true);
+        DeathScreen.SetActive(true);
     }
 
     private void LoadNewScene()
@@ -173,6 +174,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayExitErrorSound()
     {
-        audioSource.PlayOneShot(NoExitAudioClip);
+        if (!audioSource.isPlaying)
+            audioSource.PlayOneShot(NoExitAudioClip);
     }
 }
