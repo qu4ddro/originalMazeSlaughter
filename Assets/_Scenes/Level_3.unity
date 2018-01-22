@@ -389,6 +389,10 @@ Prefab:
       propertyPath: moveTime
       value: 350
       objectReference: {fileID: 0}
+    - target: {fileID: 1413955079132508, guid: 9e2ef0ca79e50b14c8621cf3ae8466e2, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e2ef0ca79e50b14c8621cf3ae8466e2, type: 2}
   m_IsPrefabParent: 0

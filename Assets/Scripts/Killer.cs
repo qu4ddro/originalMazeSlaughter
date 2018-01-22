@@ -71,6 +71,9 @@ public class Killer : MovingObject
         
     }
 
+
+
+
     private void MoveKiller()
     {
         //Check if moving horizontally, if so set vertical to zero.
