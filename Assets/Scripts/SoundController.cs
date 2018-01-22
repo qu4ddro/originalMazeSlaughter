@@ -21,7 +21,7 @@ public class SoundController : MonoBehaviour
         myAudioSource.Play();
         StartCoroutine(FadeSound(1, 3f));
 
-        Invoke("PlayDelayerStartClip", 2f);
+        //Invoke("PlayDelayerStartClip", 2f);
     }
 
     public IEnumerator FadeSound(float _newVolume, float FadeDuration)
