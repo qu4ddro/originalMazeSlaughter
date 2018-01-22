@@ -145,7 +145,16 @@ public abstract class MovingObject : MonoBehaviour
             //Return true to say that Move was successful
             return true;
         }
-        
+        if (rb2D.gameObject.GetComponent<Killer>() && hit.transform.gameObject.GetComponent<BreakableWall>())
+        {
+            end.x += xDir;
+            end.y += yDir;
+            StartCoroutine(SmoothMovement(end));
+
+            //Return true to say that Move was successful
+            return true;
+        }
+
         //If something was hit, return false, Move was unsuccesful.
         return false;
     }

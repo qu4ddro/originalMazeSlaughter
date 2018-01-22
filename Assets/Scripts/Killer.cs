@@ -47,7 +47,12 @@ public class Killer : MovingObject
         {
             hitted.gameObject.GetComponent<Player>().Die();
         }
-
+        else if (hitted.gameObject.tag == "Exit")
+        {
+            ChangeDirectionToLeft();
+            AttemptMove(_horizontal, _vertical);
+        }
+        
     }
 
     private void MoveKiller()

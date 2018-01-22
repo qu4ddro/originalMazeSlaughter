@@ -6,6 +6,7 @@ using UnityEngine;
 public class Switch : Wall
 {
     public List<GameObject> SubordinateGameObjects;
+    public int Timer;
 
     private DateTime cooldown = DateTime.Now;
     private bool active = false;
@@ -27,7 +28,7 @@ public class Switch : Wall
 
     public void Activate()
     {
-        if (((DateTime.Now-cooldown).Seconds > 5) && canBeActivated)
+        if (((DateTime.Now-cooldown).Seconds > Timer) && canBeActivated)
         {
             audiosource.PlayOneShot(SwitchActivateAudioClip);
             if (active)
