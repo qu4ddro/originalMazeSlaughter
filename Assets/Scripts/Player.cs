@@ -78,6 +78,10 @@ public class Player : MovingObject
                 GameManager.instance.PlayExitErrorSound();
             }
         }
+        else if (hitted.gameObject.GetComponent<Killer>())
+        {
+            Die();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
