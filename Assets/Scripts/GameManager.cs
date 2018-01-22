@@ -116,12 +116,23 @@ public class GameManager : MonoBehaviour
         }
         */
 
-        Invoke("FinishedLoading", levelStartDelay);
+        StartCoroutine(FinishedLoading());
     }
 
-    private void FinishedLoading()
+    private IEnumerator FinishedLoading()
     {
+        while (Input.anyKey ==false)
+        {
+            yield return null;
+        }
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundController>();
+        soundManager.PlayDelayerStartClip();
+        Invoke("StartLevel", levelStartDelay);
+       
+    }
+
+    private void StartLevel()
+    {
         doingSetup = false;
         LevelImage.SetActive(false);
     }
