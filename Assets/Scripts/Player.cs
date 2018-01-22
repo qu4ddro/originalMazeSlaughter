@@ -180,13 +180,13 @@ public class Player : MovingObject
                     //Inventory.Remove(axe);
                     transform.Find("Axe").gameObject.SetActive(false);
                 }
-
             }
         }
     }
 
     public override void Die()
     {
+        this.gameObject.SetActive(false);
         GameManager.instance.GameOver();
     }
 }

@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
     public GameObject Background;
 
     public Object[] scenesToLoad;
-    public GameObject player;
+    private GameObject player;
+    private GameObject lightObject;
+
     public bool PlayerIsAlive = true;
 
     public bool doingSetup;
@@ -56,7 +58,6 @@ public class GameManager : MonoBehaviour
         doingSetup = true;
         StartCoroutine("LoadNewScene");
     }
-
     
     public void NextLevel()
     {
@@ -95,9 +96,27 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         PlayerIsAlive = false;
+        doingSetup = true;
+        //StartCoroutine(FadeLight());
+        audioSource.PlayOneShot(LooseAudioClip);
         Background.SetActive(true);
     }
 
+    /*
+    IEnumerator FadeLight()
+    {
+        float startTime = Time.time;
+        Light light = lightObject.gameObject.GetComponent<Light>();
+        float lightRange = light.range;
+        while (lightRange > Mathf.Epsilon)
+        {
+            Debug.Log(lightRange);
+            lightRange = Mathf.Lerp(lightRange, 0, 1/startTime-Time.time);
+            light.range = lightRange;
+        }
+        yield return null;
+    }
+    */
     private void LoadNewScene()
     {
         Object scene = scenesToLoad[level - 1];
@@ -106,7 +125,7 @@ public class GameManager : MonoBehaviour
         LevelImage.SetActive(true);
 
         // Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
-         AsyncOperation async = SceneManager.LoadSceneAsync(scene.name);
+        SceneManager.LoadSceneAsync(scene.name);
 
         /*
         // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
@@ -122,6 +141,8 @@ public class GameManager : MonoBehaviour
     private void FinishedLoading()
     {
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundController>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        lightObject = GameObject.FindGameObjectWithTag("Light");
         doingSetup = false;
         LevelImage.SetActive(false);
     }
