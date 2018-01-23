@@ -9,6 +9,12 @@ public class Wiggler : MonoBehaviour
     public float amount;
 
     private float lastWiggle;
+    private float originalLightSize;
+
+    private void Start()
+    {
+        originalLightSize = light.intensity;
+    }
 
     // Update is called once per frame
     void Update () {
@@ -17,31 +23,31 @@ public class Wiggler : MonoBehaviour
 	        lastWiggle += Time.deltaTime;
 
 	        if (lastWiggle > 1f / speed)
-	        {       // flashFrequency is int
+	        {
 	            lastWiggle = 0;
-	            float newLightSize = Random.Range(light.range - amount, light.range + amount);
+	            float newLightSize = originalLightSize*Random.Range(1-amount, 1+amount);
 	            StopCoroutine("FadeToNewLightSize");
                 StartCoroutine("FadeToNewLightSize", newLightSize);
+                Debug.Log("new Wiggle: "+newLightSize);
             }
         }
     }
 
     IEnumerator FadeToNewLightSize(float _newLightSize)
     {
-        float currentSize = light.range;
+        float currentSize = light.intensity;
         float remainingDistance = _newLightSize - currentSize;
         float elapsedTime = 0;
 
         while (Mathf.Abs(remainingDistance) > float.Epsilon)
         {
-            float newSize = Mathf.Lerp(currentSize, _newLightSize, elapsedTime / 0.2f);
+            light.intensity = Mathf.Lerp(currentSize, _newLightSize,  elapsedTime / (1f/speed));
 
-            light.range = Mathf.Lerp(currentSize, _newLightSize, elapsedTime / 0.2f);
-
-            currentSize = light.range;
+            currentSize = light.intensity;
             remainingDistance = _newLightSize - currentSize;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        Debug.Log("FadeFertig");
     }
 }

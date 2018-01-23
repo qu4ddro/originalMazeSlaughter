@@ -107,6 +107,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FadeLight(0,.5f));
         audioSource.PlayOneShot(LooseAudioClip);
         StartCoroutine(soundManager.FadeSound(0, 1f));
+        Invoke("RestartLevel",10f);
+    }
+
+    public void RestartLevel()
+    {
+        LoadNewScene();
     }
 
     public IEnumerator FadeLight(float _valueToFadeTo, float FadeDuration)
