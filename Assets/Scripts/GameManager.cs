@@ -109,23 +109,21 @@ public class GameManager : MonoBehaviour
         StartCoroutine(soundManager.FadeSound(0, 1f));
     }
 
-
-    public IEnumerator FadeLight(float _newVolume, float FadeDuration)
+    public IEnumerator FadeLight(float _valueToFadeTo, float FadeDuration)
     {
-        GameObject mask = GameObject.FindGameObjectWithTag("Mask");
-        //Light light = lightObject.gameObject.GetComponent<Light>();
-        float lightRange = mask.transform.localScale.x;
+        Light light = lightObject.gameObject.GetComponent<Light>();
+        float lightRange = light.range;
 
         float startTime = Time.time;
         float elapsedTime = 0;
-        float remaining = _newVolume - lightRange;
+        float remaining = _valueToFadeTo - lightRange;
 
         while (Mathf.Abs(remaining) > float.Epsilon)
         {
-            float newscale = Mathf.Lerp(lightRange, _newVolume, elapsedTime / FadeDuration);
-            mask.transform.localScale = new Vector3(newscale, newscale, newscale);
+            float newscale = Mathf.Lerp(lightRange, _valueToFadeTo, elapsedTime / FadeDuration);
             elapsedTime = Time.time - startTime;
-            remaining = _newVolume - mask.transform.localScale.x;
+            remaining = _valueToFadeTo - light.range;
+            light.range = newscale;
             yield return null;
         }
         Background.SetActive(true);

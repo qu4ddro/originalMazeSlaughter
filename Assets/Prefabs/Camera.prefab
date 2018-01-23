@@ -20,13 +20,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4346721197305104}
   - component: {fileID: 108796263691665726}
+  - component: {fileID: 114861563559856214}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1577435515143442
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +79,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4135663660976398
 Transform:
   m_ObjectHideFlags: 1
@@ -112,7 +113,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1577435515143442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.42, y: -2.86, z: -17.79}
+  m_LocalPosition: {x: 43.95, y: -14.96, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4135663660976398}
@@ -188,7 +189,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 8.9
+  m_Range: 8.49
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -236,6 +237,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 43e67ee2305ed884bbc78619063e33bf, type: 2}
+--- !u!114 &114861563559856214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344717493213816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad001ca078238541a3943b099c592fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 108796263691665726}
+  speed: 7
+  amount: 0.5
 --- !u!124 &124609494905183768
 Behaviour:
   m_ObjectHideFlags: 1

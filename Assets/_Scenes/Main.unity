@@ -669,7 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4fe0dc8d301c2f44ae1a2815c711cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 3
+  level: 2
   levelStartDelay: 1
   LevelImage: {fileID: 1151903168}
   LevelImages:
