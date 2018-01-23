@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         LoadNewScene();
+        
     }
 
     public IEnumerator FadeLight(float _valueToFadeTo, float FadeDuration)
@@ -166,6 +167,8 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         lightObject = GameObject.FindGameObjectWithTag("Light");
         soundManager.PlayDelayedStartClip();
+        DeathScreen.SetActive(false);
+        Background.SetActive(false);
         Invoke("StartLevel", levelStartDelay);
        
     }

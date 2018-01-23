@@ -28,7 +28,6 @@ public class Wiggler : MonoBehaviour
 	            float newLightSize = originalLightSize*Random.Range(1-amount, 1+amount);
 	            StopCoroutine("FadeToNewLightSize");
                 StartCoroutine("FadeToNewLightSize", newLightSize);
-                Debug.Log("new Wiggle: "+newLightSize);
             }
         }
     }
@@ -48,6 +47,5 @@ public class Wiggler : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        Debug.Log("FadeFertig");
     }
 }
