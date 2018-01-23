@@ -7,9 +7,8 @@ public class SoundController : MonoBehaviour
 {
     public AudioClip AmbientAudioClip;
     public AudioClip StartAudioClip;
-    public AudioClip[] RandomAudioClips;
-
     public AudioClip WinAudioClip;
+    public AudioClip KillerStartAudioClip;
 
     public float StartVolumeAmbientSound = 0.65f;
 
@@ -22,6 +21,8 @@ public class SoundController : MonoBehaviour
         audioSource.volume = 0;
         audioSource.Play();
         StartCoroutine(FadeSound(StartVolumeAmbientSound, 3f));
+
+        Invoke("PlayDelayedKillerStartClip", 2f);
 
         //Invoke("PlayDelayerStartClip", 2f);
     }
@@ -42,9 +43,14 @@ public class SoundController : MonoBehaviour
         }
     }
 
-    public void PlayDelayerStartClip()
+    public void PlayDelayedStartClip()
     {
         audioSource.PlayOneShot(StartAudioClip);
+    }
+
+    public void PlayDelayedKillerStartClip()
+    {
+        audioSource.PlayOneShot(KillerStartAudioClip);
     }
 
     public void PlayOneShot(AudioClip _clipToPlay)

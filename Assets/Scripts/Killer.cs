@@ -18,11 +18,11 @@ public class Killer : MovingObject
     private IEnumerator RandomSounds(float startTime)
     {
         System.Random random = new System.Random();
-        while (Time.time - startTime < 5)
+        while (Time.time - startTime < 7)
         {
             yield return null;
         }
-        while ((int)Time.time%random.Next(1,4) != 1)
+        while ((int)Time.time%random.Next(1,5) != 1)
         {
             yield return null;
         }

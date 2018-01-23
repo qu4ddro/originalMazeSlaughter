@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundController>();
         player = GameObject.FindGameObjectWithTag("Player");
         lightObject = GameObject.FindGameObjectWithTag("Light");
-        soundManager.PlayDelayerStartClip();
+        soundManager.PlayDelayedStartClip();
         Invoke("StartLevel", levelStartDelay);
        
     }
@@ -174,7 +174,8 @@ public class GameManager : MonoBehaviour
 
     public void PlayItemErrorSound()
     {
-        audioSource.PlayOneShot(NoMoreItemsAudioClip);
+        if (!audioSource.isPlaying)
+            audioSource.PlayOneShot(NoMoreItemsAudioClip);
     }
 
     public void PlayExitErrorSound()
